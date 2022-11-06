@@ -1,0 +1,11 @@
+matches:
+   - regex: "[uU]\\+?(?P<id>([a-fA-f0-9]){4,5})="
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: script
+          params:
+             args:
+                - node
+                - --eval
+                - "console.log(String.fromCharCode(0x{{id}}))"
