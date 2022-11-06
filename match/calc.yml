@@ -1,0 +1,23 @@
+matches:
+   - regex: "C(?P<expr>.+)="
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: script
+          params:
+             args:
+                - node
+                - --eval
+                - "console.log({{expr}})"
+   - trigger: "calc="
+     replace: "{{output}}"
+     vars:
+        - name: "clipboard"
+          type: "clipboard"
+        - name: output
+          type: script
+          params:
+             args:
+                - node
+                - --eval
+                - "console.log({{clipboard}})"
