@@ -8,16 +8,19 @@ matches:
              args:
                 - node
                 - --eval
-                - "console.log({{expr}})"
+                - "console.log(JSON.stringify({{expr}}))"
    - trigger: "calc="
      replace: "{{output}}"
      vars:
-        - name: "clipboard"
-          type: "clipboard"
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[expr]]
         - name: output
           type: script
           params:
              args:
                 - node
                 - --eval
-                - "console.log({{clipboard}})"
+                - "console.log(JSON.stringify({{form.expr}}))"
