@@ -2,3 +2,5 @@ filter_title: "Discord"
 
 extra_includes:
    - "../match/apps/_discord.yml"
+extra_excludes:
+   - "../match/packages/actually-all-emojis/*"
