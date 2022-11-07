@@ -1,5 +1,5 @@
 matches:
-   - regex: "E(?P<expr>.+)="
+   - regex: "E(?P<expr>.+);"
      replace: "{{output}}"
      vars:
         - name: output
@@ -13,7 +13,7 @@ matches:
                 - "%CONFIG%/scripts/expr.ts"
                 - --
                 - "{{expr}}"
-   - trigger: "expr="
+   - trigger: "expr;"
      replace: "{{output}}"
      vars:
         - name: "form"
