@@ -26,8 +26,6 @@ const formatResult = ["f", "F", "Format"].includes(args.format);
 let expr = args.expr;
 const AsyncFunction = async function () {}.constructor;
 
-console.log(expr);
-
 try {
 	// Replace dice notation.
 	let matches;
