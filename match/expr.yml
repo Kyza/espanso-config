@@ -1,5 +1,5 @@
 matches:
-   - regex: "E(?P<expr>.+);"
+   - regex: "E(?P<expr>.+?)(?P<format>f?);"
      replace: "{{output}}"
      vars:
         - name: output
@@ -10,8 +10,8 @@ matches:
                 - --quiet
                 - run
                 - "%CONFIG%/scripts/expr.ts"
-                - --
-                - "{{expr}}"
+                - --expr="{{expr}}"
+                - --format="{{format}}"
 
    - trigger: "expr;"
      replace: "{{output}}"
@@ -21,9 +21,16 @@ matches:
           params:
              layout: |
                 [[expr]]
+                [[format]]
              fields:
                 expr:
                    multiline: true
+                format:
+                   type: list
+                   default: Plain
+                   values:
+                      - Plain
+                      - Formatted
         - name: output
           type: script
           params:
@@ -32,5 +39,5 @@ matches:
                 - --quiet
                 - run
                 - "%CONFIG%/scripts/expr.ts"
-                - --
-                - "{{form.expr}}"
+                - --expr="{{form.expr}}"
+                - --format="{{form.format}}"

@@ -1,3 +1,4 @@
+import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
 import * as vegas from "https://deno.land/x/vegas@v1.3.0/mod.ts";
 import * as bigDecimal from "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js";
 
@@ -17,15 +18,15 @@ function roll(amount: number, sides: number | "%"): number {
 	return result;
 }
 
-let expr = Deno.args[Deno.args.findIndex((arg) => arg === "--") + 1];
+const args = parse(Deno.args, {
+	string: ["expr", "format"],
+});
+
+const formatResult = ["f", "F", "Format"].includes(args.format);
+let expr = args.expr;
 const AsyncFunction = async function () {}.constructor;
 
-// If the expression ends with "f", format the result.
-let formatResult = false;
-if (expr.endsWith("f")) {
-	formatResult = true;
-	expr = expr.slice(0, -1);
-}
+console.log(expr);
 
 try {
 	// Replace dice notation.
