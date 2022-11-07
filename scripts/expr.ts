@@ -20,14 +20,14 @@ function roll(amount: number, sides: number | "%"): number {
 let expr = process.argv[process.argv.findIndex((arg) => arg === "--") + 1];
 const AsyncFunction = async function () {}.constructor;
 
-try {
-	// If the expression ends with "f", format the result.
-	let formatResult = false;
-	if (expr.endsWith("f")) {
-		formatResult = true;
-		expr = expr.slice(0, -1);
-	}
+// If the expression ends with "f", format the result.
+let formatResult = false;
+if (expr.endsWith("f")) {
+	formatResult = true;
+	expr = expr.slice(0, -1);
+}
 
+try {
 	// Replace dice notation.
 	let matches;
 	while ((matches = diceNotation.exec(expr))) {
@@ -61,12 +61,18 @@ try {
 			console.log(result);
 			break;
 		default:
-			console.log(JSON.stringify(result, null, "\t"));
+			console.log(
+				formatResult
+					? JSON.stringify(result, null, "\t")
+					: JSON.stringify(result)
+			);
 			break;
 	}
 } catch (e) {
 	console.log(expr);
-	console.log(JSON.stringify(process.argv, null, "\t"));
+	formatResult
+		? JSON.stringify(process.argv, null, "\t")
+		: JSON.stringify(process.argv);
 	console.log(e);
 }
 
