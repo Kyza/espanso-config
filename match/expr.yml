@@ -6,13 +6,13 @@ matches:
           type: script
           params:
              args:
-                - node
-                - --no-warnings
-                - --loader
-                - "file://%CONFIG%/node_modules/tsx/dist/loader.js"
+                - deno
+                - --quiet
+                - run
                 - "%CONFIG%/scripts/expr.ts"
                 - --
                 - "{{expr}}"
+
    - trigger: "expr;"
      replace: "{{output}}"
      vars:
