@@ -1,0 +1,37 @@
+matches:
+   - regex: "E(?P<expr>.+)="
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: script
+          params:
+             args:
+                - node
+                - --no-warnings
+                - --loader
+                - "file://%CONFIG%/node_modules/tsx/dist/loader.js"
+                - "%CONFIG%/scripts/expr.ts"
+                - --
+                - "{{form.expr}}"
+   - trigger: "expr="
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[expr]]
+             fields:
+                expr:
+                   multiline: true
+        - name: output
+          type: script
+          params:
+             args:
+                - node
+                - --no-warnings
+                - --loader
+                - "file://%CONFIG%/node_modules/tsx/dist/loader.js"
+                - "%CONFIG%/scripts/expr.ts"
+                - --
+                - "{{form.expr}}"
