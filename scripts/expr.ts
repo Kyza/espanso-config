@@ -40,16 +40,19 @@ try {
 		expr = expr.replace(matches[0], rolled.toString());
 	}
 
-	// Implicit return the last expression.
-	// Trim and remove ending if it's a semicolor.
+	// Try to implicit return the last expression.
+	// Trim and remove ending if it's a semicolon.
 	expr = expr.trim();
 	if (expr.endsWith(";")) expr = expr.slice(0, -1);
-	const lastBreakIndex = expr.lastIndexOf(";");
+	const lastBreakIndex = Math.max(
+		expr.lastIndexOf(";"),
+		expr.lastIndexOf("}") // Catch loops.
+	);
 	let lastExpr = "";
 	if (lastBreakIndex > -1) {
 		// It was multiline.
 		lastExpr = expr.slice(lastBreakIndex + 1);
-		expr = expr.slice(0, lastBreakIndex);
+		expr = expr.slice(0, lastBreakIndex + 1);
 	} else {
 		// It was a single line.
 		lastExpr = expr;
