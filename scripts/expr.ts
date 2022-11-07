@@ -4,7 +4,11 @@ const expr = process.argv[process.argv.findIndex((arg) => arg === "--") + 1];
 const AsyncFunction = async function () {}.constructor;
 
 try {
-	const result = await AsyncFunction("bd", `return ${expr}`)(bigDecimal);
+	const result = await AsyncFunction(
+		"bd",
+		"m",
+		`return ${expr}`
+	)(bigDecimal, Math);
 	switch (typeof result) {
 		case "bigint":
 			// Remove the n at the end.
