@@ -1,5 +1,5 @@
 matches:
-   - regex: "[uU]\\+?(?P<id>([a-fA-F0-9]){1,5});"
+   - regex: "U\\+?(?P<id>([a-fA-F0-9]){1,5});"
      replace: "{{output}}"
      vars:
         - name: output
