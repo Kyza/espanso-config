@@ -1,5 +1,5 @@
-import bigDecimal from "js-big-decimal";
-import crypto from "node:crypto";
+import * as vegas from "https://deno.land/x/vegas@v1.3.0/mod.ts";
+import * as bigDecimal from "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js";
 
 const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/i;
 
@@ -10,14 +10,14 @@ function roll(amount: number, sides: number | "%"): number {
 	let result = 0;
 
 	while (amount > 0) {
-		result += crypto.randomInt(1, sides);
+		result += vegas.randomInt(1, sides + 1);
 		amount--;
 	}
 
 	return result;
 }
 
-let expr = process.argv[process.argv.findIndex((arg) => arg === "--") + 1];
+let expr = Deno.args[Deno.args.findIndex((arg) => arg === "--") + 1];
 const AsyncFunction = async function () {}.constructor;
 
 // If the expression ends with "f", format the result.
@@ -32,18 +32,37 @@ try {
 	let matches;
 	while ((matches = diceNotation.exec(expr))) {
 		const rolled = roll(
-			matches.groups.amount ?? 1,
-			matches.groups.sides === "%" ? "%" : parseInt(matches.groups.sides)
+			parseInt(matches.groups?.amount ?? "1"),
+			matches.groups?.sides === "%"
+				? "%"
+				: parseInt(matches.groups?.sides ?? "1")
 		);
 		expr = expr.replace(matches[0], rolled.toString());
+	}
+
+	// Implicit return the last expression.
+	// Trim and remove ending if it's a semicolor.
+	expr = expr.trim();
+	if (expr.endsWith(";")) expr = expr.slice(0, -1);
+	const lastBreakIndex = expr.lastIndexOf(";");
+	let lastExpr = "";
+	if (lastBreakIndex > -1) {
+		// It was multiline.
+		lastExpr = expr.slice(lastBreakIndex + 1);
+		expr = expr.slice(0, lastBreakIndex);
+	} else {
+		// It was a single line.
+		lastExpr = expr;
+		expr = "";
 	}
 
 	const result = await AsyncFunction(
 		"bd",
 		"m",
 		"crypto",
-		`return ${expr}`
-	)(bigDecimal, Math, crypto);
+		"vegas",
+		`${expr};return ${lastExpr.trim()};`
+	)(bigDecimal, Math, crypto, vegas);
 
 	switch (typeof result) {
 		case "number":
@@ -71,8 +90,8 @@ try {
 } catch (e) {
 	console.log(expr);
 	formatResult
-		? JSON.stringify(process.argv, null, "\t")
-		: JSON.stringify(process.argv);
+		? JSON.stringify(Deno.args, null, "\t")
+		: JSON.stringify(Deno.args);
 	console.log(e);
 }
 

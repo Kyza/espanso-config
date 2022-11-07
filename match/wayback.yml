@@ -22,6 +22,7 @@ matches:
           type: script
           params:
              args:
-                - node
-                - --eval
+                - deno
+                - --quiet
+                - eval
                 - "const{log}=console;switch('{{form.target}}'){case'Latest':log('web/*/{{form.url}}');break; case'Overview':log('web/{{form.url}}');break; case'Save':log('save/{{form.url}}');break;}"

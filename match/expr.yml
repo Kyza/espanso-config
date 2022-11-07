@@ -21,14 +21,16 @@ matches:
           params:
              layout: |
                 [[expr]]
+             fields:
+                expr:
+                   multiline: true
         - name: output
           type: script
           params:
              args:
-                - node
-                - --no-warnings
-                - --loader
-                - "file://%CONFIG%/node_modules/tsx/dist/loader.js"
+                - deno
+                - --quiet
+                - run
                 - "%CONFIG%/scripts/expr.ts"
                 - --
                 - "{{form.expr}}"
