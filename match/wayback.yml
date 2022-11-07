@@ -1,0 +1,27 @@
+matches:
+   - regex: "wayback;"
+     replace: "https://web.archive.org/{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                URL: [[url]]
+                [[target]]
+             fields:
+                url:
+                   type: text
+                target:
+                   type: list
+                   default: Latest
+                   values: |
+                      Latest
+                      Overview
+                      Save
+        - name: output
+          type: script
+          params:
+             args:
+                - node
+                - --eval
+                - "const{log}=console;switch('{{form.target}}'){case'Latest':log('web/*/{{form.url}}');break; case'Overview':log('web/{{form.url}}');break; case'Save':log('save/{{form.url}}');break;}"

@@ -1,0 +1,3 @@
+matches:
+   - regex: "gh(?P<name>[a-zA-Z0-9_-]+)/(?P<repo>[a-zA-Z0-9_-]+);"
+     replace: "https://github.com/{{name}}/{{repo}}"
