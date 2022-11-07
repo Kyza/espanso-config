@@ -1,7 +1,7 @@
 import bigDecimal from "js-big-decimal";
 import crypto from "node:crypto";
 
-const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/gi;
+const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/i;
 
 function roll(amount: number, sides: number | "%"): number {
 	if (sides === 1) return amount;
@@ -31,6 +31,8 @@ try {
 	// Replace dice notation.
 	let matches;
 	while ((matches = diceNotation.exec(expr))) {
+		console.log(matches);
+
 		const rolled = roll(
 			matches.groups.amount ?? 1,
 			matches.groups.sides === "%" ? "%" : parseInt(matches.groups.sides)
