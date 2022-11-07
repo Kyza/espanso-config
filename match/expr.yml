@@ -21,9 +21,6 @@ matches:
           params:
              layout: |
                 [[expr]]
-             fields:
-                expr:
-                   multiline: true
         - name: output
           type: script
           params:
