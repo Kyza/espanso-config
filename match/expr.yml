@@ -12,7 +12,7 @@ matches:
                 - "file://%CONFIG%/node_modules/tsx/dist/loader.js"
                 - "%CONFIG%/scripts/expr.ts"
                 - --
-                - "{{form.expr}}"
+                - "{{expr}}"
    - trigger: "expr="
      replace: "{{output}}"
      vars:
