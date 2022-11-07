@@ -31,8 +31,6 @@ try {
 	// Replace dice notation.
 	let matches;
 	while ((matches = diceNotation.exec(expr))) {
-		console.log(matches);
-
 		const rolled = roll(
 			matches.groups.amount ?? 1,
 			matches.groups.sides === "%" ? "%" : parseInt(matches.groups.sides)
