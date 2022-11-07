@@ -6,7 +6,7 @@ matches:
           type: "form"
           params:
              layout: |
-                URL: [[url]]
+                [[url]]
                 [[target]]
              fields:
                 url:
