@@ -10,8 +10,8 @@ matches:
                 - --quiet
                 - run
                 - "%CONFIG%/scripts/expr.ts"
-                - --expr="{{expr}}"
-                - --format="{{format}}"
+                - "--expr={{expr}}"
+                - "--format={{format}}"
 
    - trigger: "expr;"
      replace: "{{output}}"
@@ -39,5 +39,5 @@ matches:
                 - --quiet
                 - run
                 - "%CONFIG%/scripts/expr.ts"
-                - --expr="{{form.expr}}"
-                - --format="{{form.format}}"
+                - "--expr={{form.expr}}"
+                - "--format={{form.format}}"
