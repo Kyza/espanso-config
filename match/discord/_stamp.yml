@@ -1,5 +1,5 @@
 matches:
-   - regex: "stamp(?P<letter>[dDtTfFR])="
+   - regex: "stamp(?P<letter>[dDtTfFR]);"
      replace: "<t:{{unixtimestamp}}:{{letter}}>"
      vars:
         - name: unixtimestamp
