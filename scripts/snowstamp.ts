@@ -14,7 +14,8 @@ const args = parse(Deno.args, {
 	],
 });
 
-let { year, month, day, hour, minute, second, snowflake, format } = args;
+const { year, month, day, hour, minute, second, snowflake } = args;
+let { format } = args;
 
 switch (format) {
 	case "Relative":
