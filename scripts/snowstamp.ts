@@ -1,5 +1,5 @@
 import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
-import { parse as parseSnowflake } from "https://unpkg.com/discord-snowflake@2.0.0/dist/src/snowflake.js";
+import { getTimestamp } from "https://unpkg.com/discord-snowflake@2.0.0/dist/src/snowflake.js";
 
 const args = parse(Deno.args, {
 	string: [
@@ -44,7 +44,7 @@ switch (format) {
 if (snowflake) {
 	console.log(
 		`<t:${Math.floor(
-			new Date(parseSnowflake(snowflake).timestamp).getTime() / 1000
+			new Date(getTimestamp(snowflake)).getTime() / 1000
 		)}${format}>`
 	);
 
