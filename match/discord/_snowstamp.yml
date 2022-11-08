@@ -1,0 +1,113 @@
+matches:
+   - trigger: "snow;"
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[snowflake]]
+                [[format]]
+             fields:
+                year:
+                   type: text
+                format:
+                   type: list
+                   default: Relative
+                   values:
+                      - Relative
+                      - Long Date Time
+                      - Short Date Time
+                      - Long Date
+                      - Short Date
+                      - Long Time
+                      - Short Time
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - "%CONFIG%/scripts/snowstamp.ts"
+                - "--snowflake={{form.snowflake}}"
+                - "--format={{form.format}}"
+   - trigger: "stamp;"
+     replace: "{{output}}"
+     vars:
+        - name: "year"
+          type: date
+          params:
+             format: "%Y"
+        - name: "month"
+          type: date
+          params:
+             format: "%m"
+        - name: "day"
+          type: date
+          params:
+             format: "%d"
+        - name: "hour"
+          type: date
+          params:
+             format: "%H"
+        - name: "minute"
+          type: date
+          params:
+             format: "%M"
+        - name: "second"
+          type: date
+          params:
+             format: "%S"
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[year]][[month]][[day]]
+                [[hour]][[minute]][[second]]
+                [[format]]
+             fields:
+                year:
+                   type: text
+                   default: "{{year}}"
+                month:
+                   type: text
+                   default: "{{month}}"
+                day:
+                   type: text
+                   default: "{{day}}"
+                hour:
+                   type: text
+                   default: "{{hour}}"
+                minute:
+                   type: text
+                   default: "{{minute}}"
+                second:
+                   type: text
+                   default: "{{second}}"
+                format:
+                   type: list
+                   default: Relative
+                   values:
+                      - Relative
+                      - Long Date Time
+                      - Short Date Time
+                      - Long Date
+                      - Short Date
+                      - Long Time
+                      - Short Time
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - "%CONFIG%/scripts/snowstamp.ts"
+                - "--year={{form.year}}"
+                - "--month={{form.month}}"
+                - "--day={{form.day}}"
+                - "--hour={{form.hour}}"
+                - "--minute={{form.minute}}"
+                - "--second={{form.second}}"
+                - "--format={{form.format}}"
