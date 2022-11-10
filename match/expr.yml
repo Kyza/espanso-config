@@ -1,5 +1,6 @@
 matches:
    - regex: "(?P<case>[eE])xpr(?P<expr>.+?)(?P<format>[fF]?);"
+     label: JavaScript Expression
      replace: "{{output}}"
      vars:
         - name: output
@@ -16,6 +17,7 @@ matches:
                 - "--case={{case}}"
 
    - regex: "(?P<case>[eE])xpr;"
+     label: JavaScript Expression Form
      replace: "{{output}}"
      vars:
         - name: "form"

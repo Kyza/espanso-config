@@ -1,5 +1,6 @@
 matches:
    - trigger: "update;"
+     label: Config Update
      replace: "{{output}}"
      vars:
         - name: "form"

@@ -1,5 +1,6 @@
 matches:
    - trigger: "wayback;"
+     label: Wayback Machine
      replace: "https://web.archive.org/{{output}}"
      vars:
         - name: "form"

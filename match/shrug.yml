@@ -1,3 +1,4 @@
 matches:
    - trigger: "shrug;"
+     label: Shrug Kaomoji
      replace: "¯\\_(ツ)_/¯"
