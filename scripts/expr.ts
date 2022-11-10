@@ -1,3 +1,7 @@
+import {
+	toOrdinal,
+	toWords,
+} from "https://cdn.skypack.dev/written-numbers?dts";
 import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
 import * as vegas from "https://deno.land/x/vegas@v1.3.0/mod.ts";
 import * as bigDecimal from "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js";
@@ -63,9 +67,10 @@ try {
 		"m",
 		"crypto",
 		"vegas",
-		"rand",
+		"words",
+		"ords",
 		`${expr};return ${lastExpr.trim()};`
-	)(bigDecimal, Math, crypto, vegas);
+	)(bigDecimal, Math, crypto, vegas, toWords, toOrdinal);
 
 	switch (typeof result) {
 		case "number":

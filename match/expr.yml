@@ -9,6 +9,7 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr={{expr}}"
                 - "--format={{format}}"
@@ -38,6 +39,7 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr={{form.expr}}"
                 - "--format={{form.format}}"
