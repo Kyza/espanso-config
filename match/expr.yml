@@ -1,5 +1,5 @@
 matches:
-   - regex: "E(?P<expr>.+?)(?P<format>f?);"
+   - regex: "E(?P<expr>.+?)(?P<format>[fF]?);"
      replace: "{{output}}"
      vars:
         - name: output
@@ -9,7 +9,7 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - "%CONFIG%/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr={{expr}}"
                 - "--format={{format}}"
 
@@ -38,6 +38,6 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - "%CONFIG%/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr={{form.expr}}"
                 - "--format={{form.format}}"

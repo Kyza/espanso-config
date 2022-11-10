@@ -8,5 +8,6 @@ matches:
              args:
                 - deno
                 - --quiet
-                - eval
-                - "console.log(String.fromCharCode(0x{{id}}))"
+                - run
+                - "{{kyzaconfig}}/scripts/unicode.ts"
+                - "--id={{id}}"

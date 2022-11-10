@@ -1,0 +1,22 @@
+matches:
+   - trigger: "update;"
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                Are you sure you want to update?
+                YES / NO
+                [[confirm]]
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-run
+                - "{{kyzaconfig}}/scripts/update.ts"
+                - "--confirm={{form.confirm}}"
+                - "--location={{kyzaconfig}}"

@@ -63,6 +63,7 @@ try {
 		"m",
 		"crypto",
 		"vegas",
+		"rand",
 		`${expr};return ${lastExpr.trim()};`
 	)(bigDecimal, Math, crypto, vegas);
 

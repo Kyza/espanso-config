@@ -29,7 +29,7 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - "%CONFIG%/scripts/snowstamp.ts"
+                - "{{kyzaconfig}}/scripts/snowstamp.ts"
                 - "--snowflake={{form.snowflake}}"
                 - "--format={{form.format}}"
    - trigger: "stamp;"
@@ -103,7 +103,7 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - "%CONFIG%/scripts/snowstamp.ts"
+                - "{{kyzaconfig}}/scripts/snowstamp.ts"
                 - "--year={{form.year}}"
                 - "--month={{form.month}}"
                 - "--day={{form.day}}"

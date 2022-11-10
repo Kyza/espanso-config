@@ -1,12 +1,11 @@
-# espanso match file
-
-# For a complete introduction, visit the official docs at: https://espanso.org/docs/
-
-# You can use this file to define the base matches (aka snippets)
-# that will be available in every application when using espanso.
-
-# Matches are substitution rules: when you type the "trigger" string
-# it gets replaced by the "replace" string.
-matches:
-   - trigger: "log;"
-     replace: "console.log($|$);"
+global_vars:
+   - name: "kyzaconfig"
+     type: script
+     params:
+        args:
+           - deno
+           - --quiet
+           - eval
+           - "import getFiles from 'https://deno.land/x/getfiles/mod.ts'; import { dirname } from 'https://deno.land/std/path/mod.ts'; console.log(dirname(getFiles({ root: Deno.args[0], exclude: ['.git'] }).find((file) => file.name === '.kyzaconfig')?.realPath))"
+           - --
+           - "%CONFIG%"
