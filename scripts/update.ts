@@ -5,7 +5,7 @@ const args = parse(Deno.args, {
 });
 
 if (/(YES|Y)/i.test(args.confirm)) {
-	const p = Deno.run({
+	const process = Deno.run({
 		cmd: ["git", "pull"],
 		cwd: args.location,
 		stdin: "piped",
@@ -13,10 +13,10 @@ if (/(YES|Y)/i.test(args.confirm)) {
 		stderr: "piped",
 	});
 
-	const { code } = await p.status();
+	const { code } = await process.status();
 
-	const rawOutput = await p.output();
-	const rawError = await p.stderrOutput();
+	const rawOutput = await process.output();
+	const rawError = await process.stderrOutput();
 
 	if (code === 0) {
 		await Deno.stdout.write(rawOutput);

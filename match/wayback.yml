@@ -1,7 +1,7 @@
 matches:
    - trigger: "wayback;"
      label: Wayback Machine
-     replace: "https://web.archive.org/{{output}}"
+     replace: "{{output}}"
      vars:
         - name: "form"
           type: "form"
@@ -9,6 +9,7 @@ matches:
              layout: |
                 [[url]]
                 [[target]]
+                [[action]]
              fields:
                 url:
                    type: text
@@ -19,6 +20,12 @@ matches:
                       Latest
                       Overview
                       Save
+                action:
+                   type: list
+                   default: Open
+                   values: |
+                      Open
+                      Output
         - name: output
           type: script
           params:
@@ -26,6 +33,8 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --allow-run
                 - "{{kyzaconfig}}/scripts/wayback.ts"
                 - "--target={{form.target}}"
                 - "--url={{form.url}}"
+                - "--action={{form.action}}"
