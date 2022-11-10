@@ -28,6 +28,25 @@ matches:
                 - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr=toWords('{{num}}')"
                 - "--case={{case}}"
+   - regex: "(?P<case>[wW])ord;"
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[num]]
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --unstable
+                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "--expr=toWords('{{form.num}}')"
+                - "--case={{case}}"
 
    - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>\\d+);"
      replace: "{{output}}"
@@ -42,4 +61,23 @@ matches:
                 - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr=toOrdinal(toWords('{{num}}'))"
+                - "--case={{case}}"
+   - regex: "(?P<case>[oO])rdi(n|na|nal)?;"
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[num]]
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --unstable
+                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "--expr=toOrdinal(toWords('{{form.num}}'))"
                 - "--case={{case}}"
