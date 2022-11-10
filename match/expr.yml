@@ -1,5 +1,5 @@
 matches:
-   - regex: "(?P<case>[eE])xpr(?P<expr>.+)(?P<format>[fF]?);"
+   - regex: "(?P<case>[eE])xpr(?P<expr>.+?)(?P<format>[fF]?);"
      replace: "{{output}}"
      vars:
         - name: output
@@ -15,7 +15,7 @@ matches:
                 - "--format={{format}}"
                 - "--case={{case}}"
 
-   - trigger: "(?P<case>[eE])xpr;"
+   - regex: "(?P<case>[eE])xpr;"
      replace: "{{output}}"
      vars:
         - name: "form"
