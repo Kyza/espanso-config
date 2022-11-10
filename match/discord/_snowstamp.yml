@@ -32,6 +32,7 @@ matches:
                 - "{{kyzaconfig}}/scripts/snowstamp.ts"
                 - "--snowflake={{form.snowflake}}"
                 - "--format={{form.format}}"
+
    - trigger: "stamp;"
      replace: "{{output}}"
      vars:

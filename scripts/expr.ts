@@ -22,8 +22,23 @@ function roll(amount: number, sides: number | "%"): number {
 	return result;
 }
 
+function replaceLast(str: string, target: string, replacement: string) {
+	const index = str.lastIndexOf(target);
+	if (index >= 0 && index + target.length >= str.length) {
+		str = str.substring(0, index) + replacement;
+	}
+	return str;
+}
+
+function propagateCase(input: string, output: string): string {
+	if (input[0].toUpperCase() === input[0]) {
+		return output && output[0].toUpperCase() + output.slice(1);
+	}
+	return output;
+}
+
 const args = parse(Deno.args, {
-	string: ["expr", "format"],
+	string: ["expr", "format", "case"],
 });
 
 const formatResult = ["f", "F", "Format"].includes(args.format);
@@ -67,25 +82,32 @@ try {
 		"m",
 		"crypto",
 		"vegas",
-		"words",
-		"ords",
+		"toWords",
+		"toOrdinal",
+		"propagateCase",
 		`${expr};return ${lastExpr.trim()};`
-	)(bigDecimal, Math, crypto, vegas, toWords, toOrdinal);
+	)(bigDecimal, Math, crypto, vegas, toWords, toOrdinal, propagateCase);
 
 	switch (typeof result) {
 		case "number":
-			console.log(formatResult ? result.toLocaleString() : result);
+			console.log(
+				formatResult
+					? result.toLocaleString("fullwide", {
+							maximumSignificantDigits: 21,
+					  })
+					: result
+			);
 			break;
 		case "bigint":
 			console.log(
 				formatResult
 					? result.toLocaleString()
 					: // Remove the n at the end.
-					  result.toString().slice(0, -1)
+					  replaceLast(result.toString(), "n", "")
 			);
 			break;
 		case "string":
-			console.log(result);
+			console.log(propagateCase(args.case, result));
 			break;
 		default:
 			console.log(

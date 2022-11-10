@@ -1,5 +1,5 @@
 matches:
-   - regex: "(?P<case>[eE])xpr(?P<expr>.+)(?P<format>[fF]?);"
+   - regex: "(?P<case>[bB])ignum;"
      replace: "{{output}}"
      vars:
         - name: output
@@ -11,28 +11,12 @@ matches:
                 - run
                 - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
-                - "--expr={{expr}}"
-                - "--format={{format}}"
+                - "--expr=toWords('ddd999'+ ('000'.repeat(dddddd999999)))"
                 - "--case={{case}}"
 
-   - trigger: "(?P<case>[eE])xpr;"
+   - regex: "(?P<case>[wW])ord(?P<num>\\d+);"
      replace: "{{output}}"
      vars:
-        - name: "form"
-          type: "form"
-          params:
-             layout: |
-                [[expr]]
-                [[format]]
-             fields:
-                expr:
-                   multiline: true
-                format:
-                   type: list
-                   default: Plain
-                   values:
-                      - Plain
-                      - Formatted
         - name: output
           type: script
           params:
@@ -42,6 +26,20 @@ matches:
                 - run
                 - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
-                - "--expr={{form.expr}}"
-                - "--format={{form.format}}"
+                - "--expr=toWords('{{num}}')"
+                - "--case={{case}}"
+
+   - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>\\d+);"
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --unstable
+                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "--expr=toOrdinal(toWords('{{num}}'))"
                 - "--case={{case}}"
