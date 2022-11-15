@@ -3,6 +3,10 @@
   "remote": {
     "https://deno.land/std@0.164.0/_util/asserts.ts": "d0844e9b62510f89ce1f9878b046f6a57bf88f208a10304aab50efcb48365272",
     "https://deno.land/std@0.164.0/flags/mod.ts": "3b459daf581e047819b6b799c92b96c81b4eecbd5ea025643d54dc0abc6ac923",
+    "https://deno.land/x/getfiles@v1.0.0/fs.ts": "b387902cfdc4e0ffba125343c68f6f886da5ac906882124a3ed908a3d68da053",
+    "https://deno.land/x/getfiles@v1.0.0/mod.ts": "59810c6574a4be76c0115db6477ca07b04206bbfa7a6dcf907c111ae073b4c7e",
+    "https://deno.land/x/getfiles@v1.0.0/types.ts": "8f09fb5b57e02dfddd1f375c4b97b88a38068a0ac3b9ac78501dc4d5a0b582f9",
+    "https://deno.land/x/getfiles@v1.0.0/utils.ts": "01c4dc7f8057c41a8eefa587726938adb2958c470b58a2676224299e10245118",
     "https://deno.land/x/vegas@v1.3.0/mod.ts": "122b3c826dc6c5de5d95389f397c5ff69fcd7a3dfca75cc010b41017b2245817",
     "https://deno.land/x/vegas@v1.3.0/seedrandom.d.ts": "a57cf3cedabf87b87d8fe36dd2e846dd4bdbb878caf6e3e9c7d4848b73267523",
     "https://esm.sh/v98/written-numbers@0.1.23/deno/written-numbers.js": "f03d4761136a48da7ba24cad06ebf247dd8779e324f3625e32cdbc12bf8c6bf6",
@@ -15,6 +19,7 @@
     "https://jspm.dev/npm:seedrandom@3.0.5/lib/xor4096.js!cjs": "e2792a8423247a660ff36e4686d19e338293d7adf3cd23d5eead032f2a204ade",
     "https://jspm.dev/npm:seedrandom@3.0.5/seedrandom!cjs": "90156324b6b69efad145fb802607a81c977e0633089758a388f28d2f72c72d91",
     "https://jspm.dev/seedrandom": "dce9ea596ca9b58319a2a159e24ccfae3d7400dd0b8b4d6aa896db98cc2d6896",
+    "https://unpkg.com/discord-snowflake@2.0.0/dist/src/snowflake.js": "cee9dcfb289ff696906024648a7d02394815f7901aa24dd657314a0dda5c7d3d",
     "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js": "0dc5242b9174aababa96e3ae16b9a579f5719f0e2b1eb7485fa011c83accd4a7"
   }
 }

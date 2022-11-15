@@ -21,6 +21,7 @@ matches:
           type: "form"
           params:
              layout: |
+                The hexidecimal Unicode ID of the character.
                 [[id]]
         - name: output
           type: script

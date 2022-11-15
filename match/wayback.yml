@@ -7,8 +7,13 @@ matches:
           type: "form"
           params:
              layout: |
+                The link you want to wayback.
                 [[url]]
+                - Latest of the saved versions of the page.
+                - Overview of all versions.
+                - Save the page.
                 [[target]]
+                Whether to type out the link or open it immediately.
                 [[action]]
              fields:
                 url:
