@@ -1,13 +1,16 @@
 import { parse } from "std/flags/mod.ts";
+import { dirname, fromFileUrl, join } from "std/path/mod.ts";
 
 const args: { confirm: string; location: string } = parse(Deno.args, {
-	string: ["confirm", "location"],
+	string: ["confirm"],
 });
+
+const kyzaConfigLocation = join(dirname(fromFileUrl(import.meta.url)), "..");
 
 if (/(YES|Y)/i.test(args.confirm)) {
 	const process = Deno.run({
 		cmd: ["git", "pull"],
-		cwd: args.location,
+		cwd: kyzaConfigLocation,
 		stdin: "piped",
 		stdout: "piped",
 		stderr: "piped",

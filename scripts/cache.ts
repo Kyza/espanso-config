@@ -1,21 +1,24 @@
 import getFiles from "getfiles";
 import { parse } from "std/flags/mod.ts";
+import { dirname, fromFileUrl, join } from "std/path/mod.ts";
 import { toWords } from "written-numbers";
 
 const args: { confirm: string; location: string } = parse(Deno.args, {
-	string: ["confirm", "location"],
+	string: ["confirm"],
 });
+
+const kyzaConfigLocation = join(dirname(fromFileUrl(import.meta.url)), "..");
 
 if (/(YES|Y)/i.test(args.confirm)) {
 	const scripts = getFiles({
-		root: args.location,
+		root: kyzaConfigLocation,
 		exclude: [".git"],
 	}).filter((file) => file.name.endsWith(".ts"));
 
 	for (const file of scripts) {
 		const process = Deno.run({
 			cmd: ["deno", "cache", "--reload", file.realPath, "--unstable"],
-			cwd: args.location,
+			cwd: kyzaConfigLocation,
 			stdin: "piped",
 			stdout: "piped",
 			stderr: "piped",

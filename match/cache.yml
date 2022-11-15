@@ -22,4 +22,3 @@ matches:
                 - --allow-read
                 - "{{kyzaconfig}}/scripts/cache.ts"
                 - "--confirm={{form.confirm}}"
-                - "--location={{kyzaconfig}}"

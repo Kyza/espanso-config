@@ -29,7 +29,6 @@ matches:
                 - "{{kyzaconfig}}/scripts/variables.ts"
                 - "--variable={{form.variable}}"
                 - "--value={{form.value}}"
-                - "--location={{kyzaconfig}}"
 
    - regex: "getvar;;"
      label: Variable Form
@@ -55,5 +54,4 @@ matches:
                 - --allow-write
                 - "{{kyzaconfig}}/scripts/variables.ts"
                 - "--variable={{form.variable}}"
-                - "--location={{kyzaconfig}}"
                 - "--raw=true"

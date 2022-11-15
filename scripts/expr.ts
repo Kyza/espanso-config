@@ -2,6 +2,7 @@ import * as bigDecimal from "js-big-decimal";
 import { parse } from "std/flags/mod.ts";
 import * as vegas from "vegas";
 import { toOrdinal, toWords } from "written-numbers";
+import { getVariable } from "./variables.ts";
 
 const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/i;
 
@@ -63,10 +64,7 @@ try {
 	// Trim and remove ending if it's a semicolon.
 	expr = expr.trim();
 	if (expr.endsWith(";")) expr = expr.slice(0, -1);
-	const lastBreakIndex = Math.max(
-		expr.lastIndexOf(";"),
-		expr.lastIndexOf("}") // Catch loops.
-	);
+	const lastBreakIndex = Math.max(expr.lastIndexOf(";"));
 	let lastExpr = "";
 	if (lastBreakIndex > -1) {
 		// It was multiline.
@@ -87,7 +85,26 @@ try {
 		"toOrdinal",
 		"propagateCase",
 		`${expr};return ${lastExpr.trim()};`
-	)(bigDecimal, Math, crypto, vegas, toWords, toOrdinal, propagateCase);
+	)(
+		bigDecimal,
+		Math,
+		crypto,
+		vegas,
+		(num: any, options: any) => {
+			return toWords(
+				num,
+				Object.assign(
+					{
+						commas: getVariable(["written-numbers", "commas"]),
+						and: getVariable(["written-numbers", "and"]),
+					},
+					options ?? {}
+				)
+			);
+		},
+		toOrdinal,
+		propagateCase
+	);
 
 	switch (typeof result) {
 		case "number":

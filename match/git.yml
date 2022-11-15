@@ -1,3 +1,17 @@
+global_vars:
+   - name: gitbases
+     type: script
+     params:
+        args:
+           - deno
+           - --quiet
+           - run
+           - --allow-read
+           - --allow-write
+           - "{{kyzaconfig}}/scripts/variables.ts"
+           - "--variable=git.bases"
+           - "--raw=false"
+
 matches:
    - regex: "gh(?P<name>[a-zA-Z0-9_-]+)/(?P<repo>[a-zA-Z0-9_-]+);;"
      label: GitHub Repo
@@ -7,19 +21,6 @@ matches:
      label: Git Form
      replace: "{{output}}"
      vars:
-        - name: gitbases
-          type: script
-          params:
-             args:
-                - deno
-                - --quiet
-                - run
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/variables.ts"
-                - "--variable=git.bases"
-                - "--location={{kyzaconfig}}"
-                - "--raw=false"
         - name: "form"
           type: "form"
           params:

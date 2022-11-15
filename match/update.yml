@@ -20,4 +20,3 @@ matches:
                 - --allow-run
                 - "{{kyzaconfig}}/scripts/update.ts"
                 - "--confirm={{form.confirm}}"
-                - "--location={{kyzaconfig}}"
