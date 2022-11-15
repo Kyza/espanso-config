@@ -1,7 +1,16 @@
-import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
 import { getTimestamp } from "https://unpkg.com/discord-snowflake@2.0.0/dist/src/snowflake.js";
 
-const args = parse(Deno.args, {
+const args: {
+	year: string;
+	month: string;
+	day: string;
+	hour: string;
+	minute: string;
+	second: string;
+	snowflake: string;
+	format: string;
+} = parse(Deno.args, {
 	string: [
 		"year",
 		"month",

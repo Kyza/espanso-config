@@ -1,13 +1,14 @@
 matches:
-   - trigger: "update;;"
-     label: Config Update
+   - trigger: "reloadcache;;"
+     label: Reload Cache
      replace: "{{output}}"
      vars:
         - name: "form"
           type: "form"
           params:
              layout: |
-                Are you sure you want to update?
+                Are you sure you want to redownload all script dependencies?
+                This could take a while.
                 YES / NO
                 [[confirm]]
         - name: output
@@ -18,6 +19,7 @@ matches:
                 - --quiet
                 - run
                 - --allow-run
-                - "{{kyzaconfig}}/scripts/update.ts"
+                - --allow-read
+                - "{{kyzaconfig}}/scripts/cache.ts"
                 - "--confirm={{form.confirm}}"
                 - "--location={{kyzaconfig}}"

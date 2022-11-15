@@ -1,5 +1,5 @@
 matches:
-   - regex: "(?P<case>[eE])xpr(?P<expr>.+?)(?P<format>[fF]?);"
+   - regex: "(?P<case>[eE])xpr(?P<expr>.+?)(?P<format>[fF]?);;"
      label: JavaScript Expression
      replace: "{{output}}"
      vars:
@@ -16,7 +16,7 @@ matches:
                 - "--format={{format}}"
                 - "--case={{case}}"
 
-   - regex: "(?P<case>[eE])xpr;"
+   - regex: "(?P<case>[eE])xpr;;"
      label: JavaScript Expression Form
      replace: "{{output}}"
      vars:

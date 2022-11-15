@@ -1,5 +1,5 @@
 matches:
-   - trigger: "escape;"
+   - trigger: "escape;;"
      label: Escape Discord Markdown
      replace: "{{output}}"
      vars:

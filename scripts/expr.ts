@@ -1,4 +1,4 @@
-import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
 import * as vegas from "https://deno.land/x/vegas@v1.3.0/mod.ts";
 import { toOrdinal, toWords } from "https://esm.sh/written-numbers";
 import * as bigDecimal from "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js";
@@ -34,7 +34,11 @@ function propagateCase(input: string, output: string): string {
 	return output;
 }
 
-const args = parse(Deno.args, {
+const args: {
+	expr: string;
+	format: string;
+	case: string;
+} = parse(Deno.args, {
 	string: ["expr", "format", "case"],
 });
 

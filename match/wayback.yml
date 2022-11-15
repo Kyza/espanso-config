@@ -1,5 +1,5 @@
 matches:
-   - trigger: "wayback;"
+   - trigger: "wayback;;"
      label: Wayback Machine
      replace: "{{output}}"
      vars:

@@ -1,5 +1,5 @@
 matches:
-   - regex: "U\\+?(?P<id>([a-fA-F0-9]){1,5});"
+   - regex: "U\\+?(?P<id>([a-fA-F0-9]){1,5});;"
      label: Unicode Character
      replace: "{{output}}"
      vars:
@@ -13,7 +13,7 @@ matches:
                 - "{{kyzaconfig}}/scripts/unicode.ts"
                 - "--id={{id}}"
 
-   - trigger: "unicode;"
+   - trigger: "unicode;;"
      label: Unicode Character Form
      replace: "{{output}}"
      vars:

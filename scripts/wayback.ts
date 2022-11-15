@@ -1,8 +1,11 @@
-import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
+import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
 
-const args = parse(Deno.args, {
-	string: ["target", "url", "action"],
-});
+const args: { target: string; url: string; action: string } = parse(
+	Deno.args,
+	{
+		string: ["target", "url", "action"],
+	}
+);
 
 let link = "https://web.archive.org/";
 

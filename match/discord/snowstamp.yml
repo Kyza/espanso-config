@@ -1,5 +1,5 @@
 matches:
-   - trigger: "snow;"
+   - trigger: "snow;;"
      label: Discord Snowflake
      replace: "{{output}}"
      vars:
@@ -34,7 +34,7 @@ matches:
                 - "--snowflake={{form.snowflake}}"
                 - "--format={{form.format}}"
 
-   - trigger: "stamp;"
+   - trigger: "stamp;;"
      label: Discord Timestamp
      replace: "{{output}}"
      vars:

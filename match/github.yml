@@ -1,9 +1,9 @@
 matches:
-   - regex: "gh(?P<name>[a-zA-Z0-9_-]+)/(?P<repo>[a-zA-Z0-9_-]+);"
+   - regex: "gh(?P<name>[a-zA-Z0-9_-]+)/(?P<repo>[a-zA-Z0-9_-]+);;"
      label: GitHub Repo
      replace: "https://github.com/{{name}}/{{repo}}"
 
-   - trigger: "github;"
+   - trigger: "github;;"
      label: GitHub Repo Form
      replace: "https://github.com/{{form.name}}/{{form.repo}}"
      vars:
