@@ -1,5 +1,5 @@
 import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
-import getFiles from "https://deno.land/x/getfiles/mod.ts";
+import getFiles from "https://deno.land/x/getfiles@v1.0.0/mod.ts";
 import { toWords } from "https://esm.sh/written-numbers";
 
 const args: { confirm: string; location: string } = parse(Deno.args, {
