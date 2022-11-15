@@ -1,7 +1,7 @@
-import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
-import * as vegas from "https://deno.land/x/vegas@v1.3.0/mod.ts";
-import { toOrdinal, toWords } from "https://esm.sh/written-numbers";
-import * as bigDecimal from "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js";
+import * as bigDecimal from "js-big-decimal";
+import { parse } from "std/flags/mod.ts";
+import * as vegas from "vegas";
+import { toOrdinal, toWords } from "written-numbers";
 
 const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/i;
 

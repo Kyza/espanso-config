@@ -1,6 +1,6 @@
-import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
-import getFiles from "https://deno.land/x/getfiles@v1.0.0/mod.ts";
-import { toWords } from "https://esm.sh/written-numbers";
+import getFiles from "getfiles";
+import { parse } from "std/flags/mod.ts";
+import { toWords } from "written-numbers";
 
 const args: { confirm: string; location: string } = parse(Deno.args, {
 	string: ["confirm", "location"],

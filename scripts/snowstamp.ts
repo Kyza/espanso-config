@@ -1,5 +1,5 @@
-import { parse } from "https://deno.land/std@0.164.0/flags/mod.ts";
-import { getTimestamp } from "https://unpkg.com/discord-snowflake@2.0.0/dist/src/snowflake.js";
+import { getTimestamp } from "discord-snowflake";
+import { parse } from "std/flags/mod.ts";
 
 const args: {
 	year: string;
