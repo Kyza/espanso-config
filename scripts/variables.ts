@@ -70,8 +70,7 @@ try {
 		} else {
 			switch (typeof result) {
 				case "object":
-					if (Array.isArray(result))
-						console.log(JSON.stringify(result.join("\n"), null, "\t"));
+					if (Array.isArray(result)) console.log(result.join("\n"));
 					break;
 				default:
 					console.log(JSON.stringify(result, null, "\t"));
