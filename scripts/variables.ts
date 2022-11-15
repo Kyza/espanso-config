@@ -8,9 +8,10 @@ const args: {
 	value: string | undefined;
 	location: string;
 	raw: boolean;
+	all: boolean;
 } = parse(Deno.args, {
 	string: ["variable", "value", "location"],
-	boolean: ["raw"],
+	boolean: ["raw", "all"],
 });
 
 const { variable, value, raw } = args;
@@ -48,6 +49,19 @@ ensureFileSync(variablesFile);
 const file = Deno.readTextFileSync(variablesFile);
 const config = file.length === 0 ? {} : TOML.parse(file);
 
+function objectPaths(obj: object, path = ""): string[] {
+	return Object.entries(obj).reduce((acc, [key, value]) => {
+		const childPath = path.length === 0 ? key : `${path}.${key}`;
+		acc.push(childPath);
+		if (typeof value === "object" && !Array.isArray(value)) {
+			acc.push(...objectPaths(value, childPath));
+		}
+		return acc;
+	}, [] as string[]);
+}
+export function getAllVariableNames() {
+	return objectPaths(config).join("\n");
+}
 export function getVariable(path: PropertyKey[]) {
 	return get(config, path);
 }
@@ -64,7 +78,9 @@ export function setVariable(path: PropertyKey[], value: any) {
 	});
 }
 
-if (Object.hasOwn(args, "variable")) {
+if (args.all) {
+	console.log(getAllVariableNames());
+} else if (Object.hasOwn(args, "variable")) {
 	try {
 		if (Object.hasOwn(args, "value")) {
 			setVariable(variable.split("."), JSON.parse(value as string));

@@ -8,6 +8,7 @@ matches:
           params:
              layout: |
                 The name of the variable to set the value of.
+                For example: git.bases
                 [[variable]]
                 The value to set the variable to.
                 [[value]]
@@ -34,6 +35,17 @@ matches:
      label: Variable Form
      replace: "{{output}}"
      vars:
+        - name: allvariables
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-read
+                - --allow-write
+                - "{{kyzaconfig}}/scripts/variables.ts"
+                - "--all=true"
         - name: "form"
           type: "form"
           params:
@@ -42,7 +54,9 @@ matches:
                 [[variable]]
              fields:
                 variable:
-                   type: text
+                   type: list
+                   values: |
+                      {{allvariables}}
         - name: output
           type: script
           params:

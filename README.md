@@ -26,8 +26,23 @@ Redownloads the cached Deno files.
 
 ## Variables
 
-### Valid Variables
 
-- `git.bases`
-  - Array.
-  - Adds more base URLs such as https://gitlab.com/ to the Git macro.
+## `git.bases`
+
+Array.
+
+Adds more base URLs such as https://gitlab.com/ to the Git macro.
+
+## `written-numbers`
+
+### `commas`
+
+Boolean.
+
+Enables commas by default in Written Numbers.
+
+### `and`
+
+Boolean.
+
+Enables hundred and by default in Written Numbers.
