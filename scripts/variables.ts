@@ -66,14 +66,14 @@ try {
 		const result = get(config, variable.split("."));
 
 		if (raw) {
-			console.log(result);
+			console.log(JSON.stringify(result, null, "\t"));
 		} else {
 			switch (typeof result) {
 				case "object":
 					if (Array.isArray(result)) console.log(result.join("\n"));
 					break;
 				default:
-					console.log(JSON.stringify(result, null, "\t"));
+					console.log(result);
 					break;
 			}
 		}
