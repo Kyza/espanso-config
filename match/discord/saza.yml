@@ -1,0 +1,4 @@
+matches:
+   - trigger: "@saza"
+     label: "Ping Saza"
+     replace: "<@188140917062893568>"

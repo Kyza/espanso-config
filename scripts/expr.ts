@@ -1,9 +1,6 @@
-import {
-	toOrdinal,
-	toWords,
-} from "https://cdn.skypack.dev/written-numbers?dts";
 import { parse } from "https://deno.land/std@0.120.0/flags/mod.ts";
 import * as vegas from "https://deno.land/x/vegas@v1.3.0/mod.ts";
+import { toOrdinal, toWords } from "https://esm.sh/written-numbers";
 import * as bigDecimal from "https://unpkg.com/js-big-decimal@1.3.1/dist/web/js-big-decimal.min.js";
 
 const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/i;

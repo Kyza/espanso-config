@@ -1,0 +1,23 @@
+matches:
+   - trigger: "escape;"
+     label: Escape Discord Markdown
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[text]]
+             fields:
+                text:
+                   type: text
+                   multiline: true
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - "{{kyzaconfig}}/scripts/escape.ts"
+                - "--text={{form.text}}"

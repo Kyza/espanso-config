@@ -1,6 +1,0 @@
-filter_title: "Discord"
-
-extra_includes:
-   - "../match/discord/*"
-extra_excludes:
-   - "../match/packages/actually-all-emojis/*"
