@@ -10,6 +10,7 @@ const args: {
 	second: string;
 	snowflake: string;
 	format: string;
+	relative: boolean;
 } = parse(Deno.args, {
 	string: [
 		"year",
@@ -21,9 +22,10 @@ const args: {
 		"snowflake",
 		"format",
 	],
+	boolean: ["relative"],
 });
 
-const { year, month, day, hour, minute, second, snowflake } = args;
+const { year, month, day, hour, minute, second, snowflake, relative } = args;
 let { format } = args;
 
 switch (format) {
@@ -60,17 +62,34 @@ if (snowflake) {
 	Deno.exit();
 }
 
-const time = new Date(
-	`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}T${hour.padStart(
-		2,
-		"0"
-	)}:${minute.padStart(2, "0")}:${second.padStart(2, "0")}.000Z`
-);
+if (relative) {
+	const time = new Date();
 
-console.log(
-	`<t:${Math.floor(
-		(time.getTime() + time.getTimezoneOffset() * 60 * 1000) / 1000
-	)}${format}>`
-);
+	time.setFullYear(time.getFullYear() + parseInt(year));
+	time.setMonth(time.getMonth() + parseInt(month));
+	time.setDate(time.getDate() + parseInt(day));
+
+	time.setHours(time.getHours() + parseInt(hour));
+	time.setMinutes(time.getMinutes() + parseInt(minute));
+	time.setSeconds(time.getSeconds() + parseInt(second));
+
+	console.log(`<t:${Math.floor(time.getTime() / 1000)}${format}>`);
+} else {
+	const time = new Date(
+		`${year}-${month.padStart(2, "0")}-${day.padStart(
+			2,
+			"0"
+		)}T${hour.padStart(2, "0")}:${minute.padStart(
+			2,
+			"0"
+		)}:${second.padStart(2, "0")}.000Z`
+	);
+
+	console.log(
+		`<t:${Math.floor(
+			(time.getTime() + time.getTimezoneOffset() * 60 * 1000) / 1000
+		)}${format}>`
+	);
+}
 
 export {};

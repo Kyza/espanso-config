@@ -34,6 +34,68 @@ matches:
                 - "--snowflake={{form.snowflake}}"
                 - "--format={{form.format}}"
 
+   - trigger: "rstamp;;"
+     label: Relative Discord Timestamp
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                Generates a Discord timestamp relative to the current time.
+                YYYY/MM/DD
+                HH:MM:SS
+                [[year]][[month]][[day]]
+                [[hour]][[minute]][[second]]
+                The format to use in the Discord timestamp.
+                [[format]]
+             fields:
+                year:
+                   type: text
+                   default: "0"
+                month:
+                   type: text
+                   default: "0"
+                day:
+                   type: text
+                   default: "0"
+                hour:
+                   type: text
+                   default: "0"
+                minute:
+                   type: text
+                   default: "0"
+                second:
+                   type: text
+                   default: "0"
+                format:
+                   type: list
+                   default: Relative
+                   values:
+                      - Relative
+                      - Long Date Time
+                      - Short Date Time
+                      - Long Date
+                      - Short Date
+                      - Long Time
+                      - Short Time
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - "{{kyzaconfig}}/scripts/snowstamp.ts"
+                - "--year={{form.year}}"
+                - "--month={{form.month}}"
+                - "--day={{form.day}}"
+                - "--hour={{form.hour}}"
+                - "--minute={{form.minute}}"
+                - "--second={{form.second}}"
+                - "--format={{form.format}}"
+                - "--relative=true"
+
    - trigger: "stamp;;"
      label: Discord Timestamp
      replace: "{{output}}"
@@ -66,8 +128,12 @@ matches:
           type: "form"
           params:
              layout: |
+                Generates a Discord timestamp at the time your enter.
+                {{year}}/{{month}}/{{day}}
+                {{hour}}:{{minute}}:{{second}}
                 [[year]][[month]][[day]]
                 [[hour]][[minute]][[second]]
+                The format to use in the Discord timestamp.
                 [[format]]
              fields:
                 year:
@@ -114,3 +180,4 @@ matches:
                 - "--minute={{form.minute}}"
                 - "--second={{form.second}}"
                 - "--format={{form.format}}"
+                - "--relative=false"
