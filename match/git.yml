@@ -1,0 +1,60 @@
+matches:
+   - regex: "gh(?P<name>[a-zA-Z0-9_-]+)/(?P<repo>[a-zA-Z0-9_-]+);;"
+     label: GitHub Repo
+     replace: "https://github.com/{{name}}/{{repo}}"
+
+   - trigger: "git;;"
+     label: Git Form
+     replace: "{{output}}"
+     vars:
+        - name: gitbase
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-read
+                - "{{kyzaconfig}}/scripts/getVariable.ts"
+                - "--name=gitbase"
+                - "--location={{kyzaconfig}}"
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                The Git link you want to use.
+                https://github.com/Kyza/espanso-config OR Kyza/espanso-config OR Kyza
+                [[url]]
+                The base Git instance link.
+                [[base]]
+                Whether to type out the link, open it immediately, or output the clone command.
+                [[action]]
+             fields:
+                url:
+                   type: text
+                base:
+                   type: list
+                   default: https://github.com/
+                   values: |
+                      https://github.com/
+                      https://gitlab.com/
+                      {{gitbase}}
+                action:
+                   type: list
+                   default: Open
+                   values: |
+                      Open
+                      Output
+                      Clone
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-run
+                - "{{kyzaconfig}}/scripts/git.ts"
+                - "--url={{form.url}}"
+                - "--base={{form.base}}"
+                - "--action={{form.action}}"
