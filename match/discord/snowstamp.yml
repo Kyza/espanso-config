@@ -7,7 +7,9 @@ matches:
           type: "form"
           params:
              layout: |
+                Generates a Discord timestamp for the snowflake (Discord ID) you enter.
                 [[snowflake]]
+                The format to use in the Discord timestamp.
                 [[format]]
              fields:
                 year:
