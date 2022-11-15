@@ -1,0 +1,59 @@
+matches:
+   - trigger: "setvar;;"
+     label: Variable Form
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                The name of the variable to set the value of.
+                [[variable]]
+                The value to set the variable to.
+                [[value]]
+             fields:
+                variable:
+                   type: text
+                value:
+                   type: text
+                   multiline: true
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-read
+                - --allow-write
+                - "{{kyzaconfig}}/scripts/variables.ts"
+                - "--variable={{form.variable}}"
+                - "--value={{form.value}}"
+                - "--location={{kyzaconfig}}"
+
+   - regex: "getvar;;"
+     label: Variable Form
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                The name of the variable to get the value of.
+                [[variable]]
+             fields:
+                variable:
+                   type: text
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-read
+                - --allow-write
+                - "{{kyzaconfig}}/scripts/variables.ts"
+                - "--variable={{form.variable}}"
+                - "--location={{kyzaconfig}}"
+                - "--raw=true"

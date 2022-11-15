@@ -45,7 +45,7 @@ matches:
                 - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr=toWords('{{num}}')"
                 - "--case={{case}}"
-   - regex: "(?P<case>[wW])ord;;"
+   - regex: "(?P<case>[wW])ordnum;;"
      label: Word Number Form
      replace: "{{output}}"
      vars:
@@ -81,7 +81,7 @@ matches:
                 - "{{kyzaconfig}}/scripts/expr.ts"
                 - "--expr=toOrdinal(toWords('{{num}}'))"
                 - "--case={{case}}"
-   - regex: "(?P<case>[oO])rdi(n|na|nal)?;;"
+   - regex: "(?P<case>[oO])rdi(n|na|nal)?num;;"
      label: Ordinal Number Form
      replace: "{{output}}"
      vars:
