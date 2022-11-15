@@ -119,11 +119,11 @@ try {
 			break;
 	}
 } catch (e) {
-	console.log(expr);
+	console.error(expr);
 	formatResult
 		? JSON.stringify(Deno.args, null, "\t")
 		: JSON.stringify(Deno.args);
-	console.log(e);
+	console.error(e);
 }
 
 export {};

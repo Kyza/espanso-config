@@ -22,6 +22,6 @@ if (/(YES|Y)/i.test(args.confirm)) {
 		console.log(new TextDecoder().decode(rawOutput));
 	} else {
 		const errorString = new TextDecoder().decode(rawError);
-		console.log(errorString);
+		console.error(errorString);
 	}
 }

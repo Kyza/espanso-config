@@ -12,7 +12,7 @@ matches:
                 - run
                 - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
-                - "--expr=toWords('ddd999'+ ('000'.repeat(dddddd999999)))"
+                - "--expr=toWords('ddd999' + ('000'.repeat(dddddd999999)))"
                 - "--case={{case}}"
    - regex: "(?P<case>[bB])igordi(n|na|nal)?;;"
      label: Big Ordinal Number
@@ -27,7 +27,7 @@ matches:
                 - run
                 - --unstable
                 - "{{kyzaconfig}}/scripts/expr.ts"
-                - "--expr=toOrdinal(toWords('ddd999'+ ('000'.repeat(dddddd999999))))"
+                - "--expr=toOrdinal(toWords('ddd999' + ('000'.repeat(dddddd999999))))"
                 - "--case={{case}}"
 
    - regex: "(?P<case>[wW])ord(?P<num>\\d+);;"

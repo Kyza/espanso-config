@@ -27,7 +27,7 @@ if (/(YES|Y)/i.test(args.confirm)) {
 		const rawError = await process.stderrOutput();
 
 		if (code === 0) {
-			await Deno.stdout.write(rawOutput);
+			console.log(new TextDecoder().decode(rawOutput));
 		} else {
 			const errorString = new TextDecoder().decode(rawError);
 			console.log(errorString);

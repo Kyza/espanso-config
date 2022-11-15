@@ -7,7 +7,7 @@ matches:
      label: Git Form
      replace: "{{output}}"
      vars:
-        - name: gitbase
+        - name: gitbases
           type: script
           params:
              args:
@@ -15,9 +15,11 @@ matches:
                 - --quiet
                 - run
                 - --allow-read
-                - "{{kyzaconfig}}/scripts/getVariable.ts"
-                - "--name=gitbase"
+                - --allow-write
+                - "{{kyzaconfig}}/scripts/variables.ts"
+                - "--variable=git.bases"
                 - "--location={{kyzaconfig}}"
+                - "--raw=false"
         - name: "form"
           type: "form"
           params:
@@ -38,7 +40,7 @@ matches:
                    values: |
                       https://github.com/
                       https://gitlab.com/
-                      {{gitbase}}
+                      {{gitbases}}
                 action:
                    type: list
                    default: Open
