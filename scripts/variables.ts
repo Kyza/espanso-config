@@ -1,11 +1,7 @@
-import {
-	dirname,
-	fromFileUrl,
-} from "https://deno.land/std@0.164.0/path/win32.ts";
 import * as TOML from "std/encoding/toml.ts";
 import { parse } from "std/flags/mod.ts";
 import { ensureFileSync } from "std/fs/mod.ts";
-import { join } from "std/path/mod.ts";
+import { dirname, fromFileUrl, join } from "std/path/mod.ts";
 
 const args: {
 	variable: string;
@@ -19,9 +15,6 @@ const args: {
 
 const { variable, value, raw } = args;
 const kyzaConfigLocation = join(dirname(fromFileUrl(import.meta.url)), "..");
-
-// console.log(location);
-// Deno.exit();
 
 // A function that recursively gets a variable from an object.
 function get(obj: any, path: PropertyKey[]): unknown {
