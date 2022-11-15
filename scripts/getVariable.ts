@@ -9,4 +9,6 @@ const { name, location } = args;
 
 try {
 	console.log(Deno.readTextFileSync(join(location, "variables", `${name}`)));
-} catch {}
+} catch {
+	// No need to output anything.
+}
