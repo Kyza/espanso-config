@@ -11,9 +11,10 @@ matches:
                 - --quiet
                 - run
                 - "{{kyzaconfig}}/scripts/unicode.ts"
-                - "--id={{id}}"
+                - "--input={{id}}"
+                - "--action=To Unicode"
 
-   - trigger: "unicode;;"
+   - regex: "[uU]nicode;;"
      label: Unicode Character Form
      replace: "{{output}}"
      vars:
@@ -21,8 +22,18 @@ matches:
           type: "form"
           params:
              layout: |
-                The hexidecimal Unicode ID of the character.
-                [[id]]
+                The hexidecimal Unicode ID of the character, or the Unicode character.
+                [[input]]
+                [[action]]
+             fields:
+                input:
+                   type: text
+                action:
+                   type: list
+                   default: "To Unicode"
+                   values: |
+                      To Unicode
+                      To ID
         - name: output
           type: script
           params:
@@ -31,4 +42,5 @@ matches:
                 - --quiet
                 - run
                 - "{{kyzaconfig}}/scripts/unicode.ts"
-                - "--id={{form.id}}"
+                - "--input={{form.input}}"
+                - "--action={{form.action}}"
