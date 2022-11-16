@@ -1,0 +1,18 @@
+matches:
+   - trigger: "config;;"
+     label: "Open Espanso Config"
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: shell
+          params:
+             cmd: "code %CONFIG%"
+
+   - trigger: "kyzaconfig;;"
+     label: "Open Kyza Espanso Config"
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: shell
+          params:
+             cmd: "code {{kyzaconfig}}"
