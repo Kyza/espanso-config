@@ -6,6 +6,6 @@ global_vars:
            - deno
            - --quiet
            - eval
-           - "import getFiles from 'https://deno.land/x/getfiles/mod.ts'; import { dirname } from 'https://deno.land/std/path/mod.ts'; console.log(dirname(getFiles({ root: Deno.args[0], exclude: ['.git'] }).find((file) => file.name === '.kyzaconfig')?.realPath))"
+           - "import getFiles from 'https://deno.land/x/getfiles@v1.0.0/mod.ts'; import { dirname } from 'https://deno.land/std/path@0.164.0/mod.ts'; console.log(dirname(getFiles({ root: Deno.args[0], exclude: ['.git'] }).find((file) => file.name === '.kyzaconfig')?.realPath))"
            - --
            - "%CONFIG%"
