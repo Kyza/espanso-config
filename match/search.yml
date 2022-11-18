@@ -1,5 +1,5 @@
 matches:
-   - regex: "(?P<query>!\\w+ ?.+?);;"
+   - regex: "(?P<query>!\\w+?( .*?)?);;"
      label: DuckDuckGo Search
      replace: "{{output}}"
      vars:
