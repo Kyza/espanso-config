@@ -15,7 +15,7 @@ matches:
                 - "--query={{query}}"
 
    - trigger: "search;;"
-     label: DuckDuckGo Search
+     label: DuckDuckGo Search Form
      replace: "{{output}}"
      vars:
         - name: "form"
