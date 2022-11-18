@@ -80,9 +80,9 @@ export function setVariable(path: PropertyKey[], value: any) {
 
 if (args.all) {
 	console.log(getAllVariableNames());
-} else if (Object.hasOwn(args, "variable")) {
+} else if ("variable" in args) {
 	try {
-		if (Object.hasOwn(args, "value")) {
+		if ("value" in args) {
 			setVariable(variable.split("."), JSON.parse(value as string));
 		} else if (has(config, variable.split("."))) {
 			const result = getVariable(variable.split("."));

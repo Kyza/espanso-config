@@ -1,0 +1,39 @@
+matches:
+   - regex: "(?P<query>!\\w+ .+);;"
+     label: DuckDuckGo Search
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-run
+                - "{{kyzaconfig}}/scripts/search.ts"
+                - "--query={{query}}"
+
+   - trigger: "search;;"
+     label: DuckDuckGo Search
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                Your search query.
+                [[query]]
+             fields:
+                query:
+                   type: text
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-run
+                - "{{kyzaconfig}}/scripts/search.ts"
+                - "--query={{form.query}}"
