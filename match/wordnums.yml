@@ -13,7 +13,7 @@ matches:
                 - --unstable
                 - --allow-read
                 - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('ddd999' + ('000'.repeat(dddddd999999)))"
                 - "--case={{case}}"
    - regex: "(?P<case>[bB])igordi(n|na|nal)?;;"
@@ -30,7 +30,7 @@ matches:
                 - --unstable
                 - --allow-read
                 - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toOrdinal(toWords('ddd999' + ('000'.repeat(dddddd999999))))"
                 - "--case={{case}}"
 
@@ -48,7 +48,7 @@ matches:
                 - --unstable
                 - --allow-read
                 - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('{{num}}')"
                 - "--case={{case}}"
    - regex: "(?P<case>[wW])ordnum;;"
@@ -70,7 +70,7 @@ matches:
                 - --unstable
                 - --allow-read
                 - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('{{form.num}}')"
                 - "--case={{case}}"
 
@@ -88,7 +88,7 @@ matches:
                 - --unstable
                 - --allow-read
                 - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toOrdinal(toWords('{{num}}'))"
                 - "--case={{case}}"
    - regex: "(?P<case>[oO])rdi(n|na|nal)?num;;"
@@ -110,6 +110,6 @@ matches:
                 - --unstable
                 - --allow-read
                 - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
+                - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toOrdinal(toWords('{{form.num}}'))"
                 - "--case={{case}}"

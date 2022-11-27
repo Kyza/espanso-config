@@ -1,6 +1,6 @@
 matches:
-   - regex: "(?P<case>[eE])xpr(?P<expr>.+?)(?P<format>[fF]?);;"
-     label: JavaScript Expression
+   - regex: "frac(?P<top>\\d+)/(?P<bottom>\\d+)(?P<format>[fF]?);;"
+     label: Reduce Fraction
      replace: "{{output}}"
      vars:
         - name: output
@@ -11,26 +11,22 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
-                - "--expr={{expr}}"
+                - "{{kyzaconfig}}/scripts/fraction.ts"
+                - "--top={{top}}"
+                - "--bottom={{bottom}}"
                 - "--format={{format}}"
-                - "--case={{case}}"
 
-   - regex: "(?P<case>[eE])xpr;;"
-     label: JavaScript Expression Form
+   - regex: "frac;;"
+     label: Reduce Fraction Form
      replace: "{{output}}"
      vars:
         - name: "form"
           type: "form"
           params:
              layout: |
-                [[expr]]
-                [[format]]
+                [[top]]
+                [[bottom]]
              fields:
-                expr:
-                   multiline: true
                 format:
                    type: list
                    default: Plain
@@ -45,9 +41,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expr.ts"
-                - "--expr={{form.expr}}"
+                - "{{kyzaconfig}}/scripts/fraction.ts"
+                - "--top={{form.top}}"
+                - "--bottom={{form.bottom}}"
                 - "--format={{form.format}}"
-                - "--case={{case}}"
