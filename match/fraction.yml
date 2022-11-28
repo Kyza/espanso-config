@@ -1,5 +1,5 @@
 matches:
-   - regex: "frac(?P<top>\\d+)/(?P<bottom>\\d+)(?P<format>[fF]?);;"
+   - regex: "frac(?P<numerator>\\d+)/(?P<denominator>\\d+)(?P<format>[fF]?);;"
      label: Reduce Fraction
      replace: "{{output}}"
      vars:
@@ -12,8 +12,8 @@ matches:
                 - run
                 - --unstable
                 - "{{kyzaconfig}}/scripts/fraction.ts"
-                - "--top={{top}}"
-                - "--bottom={{bottom}}"
+                - "--numerator={{numerator}}"
+                - "--denominator={{denominator}}"
                 - "--format={{format}}"
 
    - regex: "frac;;"
@@ -24,8 +24,8 @@ matches:
           type: "form"
           params:
              layout: |
-                [[top]]
-                [[bottom]]
+                Numerator and denominator for the fraction to reduce.
+                [[numerator]] ÷ [[denominator]]
              fields:
                 format:
                    type: list
@@ -42,6 +42,6 @@ matches:
                 - run
                 - --unstable
                 - "{{kyzaconfig}}/scripts/fraction.ts"
-                - "--top={{form.top}}"
-                - "--bottom={{form.bottom}}"
+                - "--numerator={{form.numerator}}"
+                - "--denominator={{form.denominator}}"
                 - "--format={{form.format}}"

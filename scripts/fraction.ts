@@ -1,11 +1,11 @@
 import { parse } from "std/flags/mod.ts";
 
 const args: {
-	top: string;
-	bottom: string;
+	numerator: string;
+	denominator: string;
 	format: string;
 } = parse(Deno.args, {
-	string: ["top", "bottom", "format"],
+	string: ["numerator", "denominator", "format"],
 });
 
 const formatResult = ["f", "F", "Format"].includes(args.format);
@@ -22,7 +22,7 @@ function reduce(numerator: number, denominator: number) {
 	return [numerator / a, denominator / a];
 }
 
-const reduced = reduce(Number(args.top), Number(args.bottom));
+const reduced = reduce(Number(args.numerator), Number(args.denominator));
 
 if (formatResult) {
 	console.log(
