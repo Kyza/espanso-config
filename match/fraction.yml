@@ -26,6 +26,7 @@ matches:
              layout: |
                 Numerator and denominator for the fraction to reduce.
                 [[numerator]] ÷ [[denominator]]
+                [[format]]
              fields:
                 format:
                    type: list

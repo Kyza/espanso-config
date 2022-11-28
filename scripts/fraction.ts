@@ -8,7 +8,7 @@ const args: {
 	string: ["numerator", "denominator", "format"],
 });
 
-const formatResult = ["f", "F", "Format"].includes(args.format);
+const formatResult = ["f", "F", "Formatted"].includes(args.format);
 
 function reduce(numerator: number, denominator: number) {
 	let a = numerator;
