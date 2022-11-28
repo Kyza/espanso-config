@@ -6,7 +6,7 @@ On Linux you will need `sensible-browser` as well.
 
 Git clone the repository into anywhere you want.
 
-Run the setup script to point to your Espanso config directory.
+Run the setup script and point `--location` to your Espanso config directory.
 
 ```bash
 deno run --allow-read --allow-write ./scripts/setup.ts --location=/THE/PATH/TO/YOUR/ESPANSO/CONFIG/ROOT
