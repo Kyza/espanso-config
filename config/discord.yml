@@ -1,0 +1,8 @@
+filter_exec: "Discord"
+
+# On Windows Discord will send each line as a separate message.
+# It's much safer to use the clipboard instead.
+backend: Clipboard
+
+extra_includes:
+   - "../match/kyza/discord/*"

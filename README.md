@@ -4,7 +4,13 @@ You will need Git and Deno installed.
 
 On Linux you will need `sensible-browser` as well.
 
-Git clone the repository into `match/kyza` in your Espanso config.
+Git clone the repository into anywhere you want.
+
+Run the setup script to point to your Espanso config directory.
+
+```bash
+deno run --allow-read --allow-write ./scripts/setup.ts --location=/THE/PATH/TO/YOUR/ESPANSO/CONFIG/ROOT
+```
 
 ## Some Commands
 
@@ -27,7 +33,9 @@ Redownloads the cached Deno files.
 ## Variables
 
 
-## `git.bases`
+## `git`
+
+### `bases`
 
 Array.
 

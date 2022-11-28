@@ -43,7 +43,7 @@ const args: {
 	string: ["expr", "format", "case"],
 });
 
-const formatResult = ["f", "F", "Format"].includes(args.format);
+const formatResult = ["f", "F", "Formatted"].includes(args.format);
 let expr = args.expr;
 const AsyncFunction = async function () {}.constructor;
 
