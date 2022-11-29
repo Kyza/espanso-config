@@ -1,4 +1,0 @@
-matches:
-   - regex: "@[sS]aza"
-     label: "Ping Saza"
-     replace: "<@188140917062893568>"

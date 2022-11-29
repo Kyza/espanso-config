@@ -1,0 +1,18 @@
+matches:
+   - regex: "phack(er)?;;"
+     label: "Opens Process Hacker"
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: shell
+          params:
+             cmd: 'Start-Process -FilePath "C:/Program Files/Process Hacker/ProcessHacker.exe"'
+
+   - regex: "phack(er)?a;;"
+     label: "Opens Process Hacker As Admin"
+     replace: "{{output}}"
+     vars:
+        - name: output
+          type: shell
+          params:
+             cmd: 'Start-Process -FilePath "C:/Program Files/Process Hacker/ProcessHacker.exe" -Verb RunAs'
