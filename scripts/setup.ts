@@ -14,6 +14,28 @@ const kyzaConfig = join(kyzaConfigLocation, "config");
 const espansoMatchKyza = join(espansoConfigLocation, "match", "kyza");
 const espansoConfigKyza = join(espansoConfigLocation, "config", "kyza");
 
+// Git moment.
+// Set the repo as a safe directory.
+const process = Deno.run({
+	cmd: [
+		"git",
+		"config",
+		"--global",
+		"--add",
+		"safe.directory",
+		kyzaConfigLocation,
+	],
+	stdin: "piped",
+	stdout: "piped",
+	stderr: "piped",
+});
+
+await Promise.all([
+	process.status(),
+	process.output(),
+	process.stderrOutput(),
+]);
+
 // Try to remove any existing symlinks.
 try {
 	if ((await Deno.stat(espansoMatchKyza)).isSymlink) {
