@@ -76,9 +76,14 @@ try {
 		expr = "";
 	}
 
+	const mathKeys = Reflect.ownKeys(Math).filter(
+		(key) => typeof key === "string"
+	) as string[];
+
 	const result = await AsyncFunction(
 		"bd",
 		"m",
+		mathKeys,
 		"crypto",
 		"vegas",
 		"toWords",
@@ -88,6 +93,8 @@ try {
 	)(
 		bigDecimal,
 		Math,
+		// @ts-ignore Yes I can.
+		...mathKeys.map((key) => Math[key]),
 		crypto,
 		vegas,
 		(num: any, options: any) => {
