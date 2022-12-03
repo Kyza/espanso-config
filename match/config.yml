@@ -3,16 +3,56 @@ matches:
      label: "Open Espanso Config"
      replace: "{{output}}"
      vars:
-        - name: output
-          type: shell
+        - name: "form"
+          type: "form"
           params:
-             cmd: "code %CONFIG%"
+             layout: |
+                How to open your Espanso config.
+                [[action]]
+             fields:
+                action:
+                   type: list
+                   default: File Explorer
+                   values: |
+                      File Explorer
+                      Visual Studio Code
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-run
+                - "{{kyzaconfig}}/scripts/config.ts"
+                - "--target=%CONFIG%"
+                - "--action={{form.action}}"
 
    - trigger: "kyzaconfig;;"
-     label: "Open Kyza Espanso Config"
+     label: "Open Kyza Config"
      replace: "{{output}}"
      vars:
-        - name: output
-          type: shell
+        - name: "form"
+          type: "form"
           params:
-             cmd: "code {{kyzaconfig}}"
+             layout: |
+                How to open your Kyza config at {{kyzaconfig}}.
+                [[action]]
+             fields:
+                action:
+                   type: list
+                   default: File Explorer
+                   values: |
+                      File Explorer
+                      Visual Studio Code
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --allow-run
+                - "{{kyzaconfig}}/scripts/config.ts"
+                - "--target={{kyzaconfig}}"
+                - "--action={{form.action}}"
