@@ -24,16 +24,23 @@ switch (args.action) {
 		}
 		break;
 	case "Visual Studio Code":
-		// Start with PowerShell because starting with CMD causes Deno to never exit.
-		action = [
-			"powershell",
-			"Start-Process",
-			"-NoNewWindow",
-			"-FilePath",
-			"code",
-			"-ArgumentList",
-			args.target,
-		];
+		switch (Deno.build.os) {
+			case "windows":
+				// Start with PowerShell because starting with CMD causes Deno to never exit.
+				action = [
+					"powershell",
+					"Start-Process",
+					"-NoNewWindow",
+					"-FilePath",
+					"code",
+					"-ArgumentList",
+					args.target,
+				];
+				break;
+			default:
+				action = ["code", args.target];
+				break;
+		}
 		break;
 	default:
 		action = ["xdg-open", args.target];
