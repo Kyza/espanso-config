@@ -1,0 +1,26 @@
+matches:
+   - regex: "sysinf;;"
+     label: "Opens System Informer"
+     replace: "{{output}}"
+     vars:
+        - name: init
+          type: shell
+          params:
+             cmd: 'Start-Process -FilePath "C:/Program Files/SystemInformer/SystemInformer.exe"'
+        - name: output
+          type: shell
+          params:
+             cmd: 'Start-Process -FilePath "C:/Program Files/SystemInformer/SystemInformer.exe"'
+
+   - regex: "sysinfa;;"
+     label: "Opens System Informer As Admin"
+     replace: "{{output}}"
+     vars:
+        - name: init
+          type: shell
+          params:
+             cmd: 'Start-Process -FilePath "C:/Program Files/SystemInformer/SystemInformer.exe" -Verb RunAs'
+        - name: output
+          type: shell
+          params:
+             cmd: 'Start-Process -FilePath "C:/Program Files/SystemInformer/SystemInformer.exe"'

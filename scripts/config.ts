@@ -12,32 +12,56 @@ switch (args.action) {
 	case "File Explorer":
 		switch (Deno.build.os) {
 			case "windows":
-				action = "explorer.exe";
+				action = [
+					"powershell",
+					"-WindowStyle",
+					"Hidden",
+					"Start-Process",
+					"-NoNewWindow",
+					"-FilePath",
+					"explorer.exe",
+					"-WorkingDirectory",
+					args.target,
+				];
 				break;
 			case "darwin":
-				action = "open";
+				action = ["open", args.target];
 				break;
 			case "linux":
-				action = "xdg-open";
+				action = ["xdg-open", args.target];
 				break;
 		}
 		break;
 	case "Visual Studio Code":
-		action = "code";
+		action = [
+			"powershell",
+			"-WindowStyle",
+			"Hidden",
+			"Start-Process",
+			"-NoNewWindow",
+			"-FilePath",
+			"code",
+			"-ArgumentList",
+			args.target,
+		];
 		break;
 	default:
-		action = "xdg-open";
+		action = ["xdg-open", args.target];
 }
 
-const process = Deno.run({
-	cmd: [action, args.target],
-	stdin: "piped",
-	stdout: "piped",
-	stderr: "piped",
-});
+try {
+	const process = Deno.run({
+		cmd: action,
+		stdin: "piped",
+		stdout: "piped",
+		stderr: "piped",
+	});
 
-await Promise.all([
-	process.status(),
-	process.output(),
-	process.stderrOutput(),
-]);
+	await Promise.all([
+		process.status(),
+		process.output(),
+		process.stderrOutput(),
+	]);
+} catch (err) {
+	console.log(err);
+}
