@@ -12,17 +12,8 @@ switch (args.action) {
 	case "File Explorer":
 		switch (Deno.build.os) {
 			case "windows":
-				action = [
-					"powershell",
-					"-WindowStyle",
-					"Hidden",
-					"Start-Process",
-					"-NoNewWindow",
-					"-FilePath",
-					"explorer.exe",
-					"-WorkingDirectory",
-					args.target,
-				];
+				// Start with CMD because starting with Start-Process causes explorer.exe to constantly use a ton of CPU.
+				action = ["cmd", "/c", "start", args.target];
 				break;
 			case "darwin":
 				action = ["open", args.target];
@@ -33,10 +24,9 @@ switch (args.action) {
 		}
 		break;
 	case "Visual Studio Code":
+		// Start with PowerShell because starting with CMD causes Deno to never exit.
 		action = [
 			"powershell",
-			"-WindowStyle",
-			"Hidden",
 			"Start-Process",
 			"-NoNewWindow",
 			"-FilePath",
