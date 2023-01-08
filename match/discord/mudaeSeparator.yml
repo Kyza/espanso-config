@@ -1,0 +1,27 @@
+matches:
+   - triggers:
+        - "musep;;"
+        - "mudaeseparate;;"
+     label: Mudae Separate List
+     replace: "{{output}}"
+     vars:
+        - name: "form"
+          type: "form"
+          params:
+             layout: |
+                [[list]]
+             fields:
+                list:
+                   multiline: true
+        - name: output
+          type: script
+          params:
+             args:
+                - deno
+                - --quiet
+                - run
+                - --unstable
+                - --allow-read
+                - --allow-write
+                - "{{kyzaconfig}}/scripts/mudaeSeparator.ts"
+                - "--list={{form.list}}"

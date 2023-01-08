@@ -16,6 +16,7 @@ matches:
                    values: |
                       File Explorer
                       Visual Studio Code
+                      Reload
         - name: output
           type: script
           params:
@@ -24,6 +25,8 @@ matches:
                 - --quiet
                 - run
                 - --allow-run
+                - --allow-read
+                - --allow-write
                 - "{{kyzaconfig}}/scripts/config.ts"
                 - "--target=%CONFIG%"
                 - "--action={{form.action}}"
