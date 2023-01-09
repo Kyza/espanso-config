@@ -52,7 +52,7 @@ matches:
                 - "-c"
                 - "--match-case={{case}}"
 
-   - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>\\d+);;"
+   - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>-?\\d+);;"
      label: Ordinal Number
      replace: "{{output}}"
      vars:
