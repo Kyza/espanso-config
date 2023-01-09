@@ -7,15 +7,8 @@ matches:
           type: script
           params:
              args:
-                - deno
-                - --quiet
-                - run
-                - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toWords('ddd999' + ('000'.repeat(dddddd999999)))"
-                - "--case={{case}}"
+                - "{{kyzaconfig}}/binaries/wordnums.exe"
+                - "-c"
    - regex: "(?P<case>[bB])igordi(n|na|nal)?;;"
      label: Big Ordinal Number
      replace: "{{output}}"
@@ -24,17 +17,12 @@ matches:
           type: script
           params:
              args:
-                - deno
-                - --quiet
-                - run
-                - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toOrdinal(toWords('ddd999' + ('000'.repeat(dddddd999999))))"
-                - "--case={{case}}"
+                - "{{kyzaconfig}}/binaries/wordnums.exe"
+                - "-c"
+                - "-o"
+                - "--match-case={{case}}"
 
-   - regex: "(?P<case>[wW])ord(?P<num>\\d+);;"
+   - regex: "(?P<case>[wW])ord(?P<num>-?\\d+);;"
      label: Word Number
      replace: "{{output}}"
      vars:
@@ -42,15 +30,10 @@ matches:
           type: script
           params:
              args:
-                - deno
-                - --quiet
-                - run
-                - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toWords('{{num}}')"
-                - "--case={{case}}"
+                - "{{kyzaconfig}}/binaries/wordnums.exe"
+                - "-n={{num}}"
+                - "-c"
+                - "--match-case={{case}}"
    - regex: "(?P<case>[wW])ordnum;;"
      label: Word Number Form
      replace: "{{output}}"
@@ -64,15 +47,10 @@ matches:
           type: script
           params:
              args:
-                - deno
-                - --quiet
-                - run
-                - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toWords('{{form.num}}')"
-                - "--case={{case}}"
+                - "{{kyzaconfig}}/binaries/wordnums.exe"
+                - "-n={{form.num}}"
+                - "-c"
+                - "--match-case={{case}}"
 
    - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>\\d+);;"
      label: Ordinal Number
@@ -82,15 +60,11 @@ matches:
           type: script
           params:
              args:
-                - deno
-                - --quiet
-                - run
-                - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toOrdinal(toWords('{{num}}'))"
-                - "--case={{case}}"
+                - "{{kyzaconfig}}/binaries/wordnums.exe"
+                - "-n={{num}}"
+                - "-c"
+                - "-o"
+                - "--match-case={{case}}"
    - regex: "(?P<case>[oO])rdi(n|na|nal)?num;;"
      label: Ordinal Number Form
      replace: "{{output}}"
@@ -104,12 +78,8 @@ matches:
           type: script
           params:
              args:
-                - deno
-                - --quiet
-                - run
-                - --unstable
-                - --allow-read
-                - --allow-write
-                - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toOrdinal(toWords('{{form.num}}'))"
-                - "--case={{case}}"
+                - "{{kyzaconfig}}/binaries/wordnums.exe"
+                - "-n={{form.num}}"
+                - "-c"
+                - "-o"
+                - "--match-case={{case}}"
