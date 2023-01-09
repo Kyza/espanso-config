@@ -9,6 +9,7 @@ matches:
              args:
                 - "{{kyzaconfig}}/binaries/wordnums.exe"
                 - "-c"
+                - "--match-case={{case}}"
    - regex: "(?P<case>[bB])igordi(n|na|nal)?;;"
      label: Big Ordinal Number
      replace: "{{output}}"
