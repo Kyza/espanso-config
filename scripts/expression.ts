@@ -35,6 +35,14 @@ function propagateCase(input: string, output: string): string {
 	return output;
 }
 
+function factorial(n: bigint | number, r: bigint | number = 1n) {
+	if (typeof n === "number") n = BigInt(n);
+	if (typeof r === "number") r = BigInt(r);
+
+	while (n > 0n) r *= n--;
+	return r;
+}
+
 const args: {
 	expr: string;
 	format: string;
@@ -89,6 +97,7 @@ try {
 		"toWords",
 		"toOrdinal",
 		"propagateCase",
+		"fact",
 		`${expr};return ${lastExpr.trim()};`
 	)(
 		bigDecimal,
@@ -110,7 +119,8 @@ try {
 			);
 		},
 		toOrdinal,
-		propagateCase
+		propagateCase,
+		factorial
 	);
 
 	switch (typeof result) {
@@ -143,11 +153,11 @@ try {
 			break;
 	}
 } catch (e) {
-	console.error(expr);
+	console.log(expr);
 	formatResult
 		? JSON.stringify(Deno.args, null, "\t")
 		: JSON.stringify(Deno.args);
-	console.error(e);
+	console.log(e);
 }
 
 export {};
