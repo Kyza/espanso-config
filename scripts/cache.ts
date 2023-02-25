@@ -1,7 +1,8 @@
 import getFiles from "getfiles";
 import { parse } from "std/flags/mod.ts";
 import { dirname, fromFileUrl, join } from "std/path/mod.ts";
-import { toWords } from "written-numbers";
+import initWrittenNumbers, { toWords } from "written-numbers";
+import getWASM from "./getWASM.ts";
 
 const args: { confirm: string; location: string } = parse(Deno.args, {
 	string: ["confirm"],
@@ -37,5 +38,13 @@ if (/(YES|Y)/i.test(args.confirm)) {
 		}
 	}
 
-	console.log(`Reloaded the caches of ${toWords(scripts.length)} scripts.`);
+	await initWrittenNumbers(
+		await getWASM(
+			"https://esm.sh/written-numbers@1.0.6/dist/wasm/written_numbers_wasm_bg.wasm"
+		)
+	);
+
+	console.log(
+		`Reloaded the caches of ${toWords({ number: scripts.length })} scripts.`
+	);
 }

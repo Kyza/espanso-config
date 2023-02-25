@@ -1,7 +1,8 @@
 import * as bigDecimal from "js-big-decimal";
 import { parse } from "std/flags/mod.ts";
 import * as vegas from "vegas";
-import { toOrdinal, toWords } from "written-numbers";
+import initWrittenNumbers, { toWords } from "written-numbers";
+import getWASM from "./getWASM.ts";
 import { getVariable } from "./variables.ts";
 
 const diceNotation = /(?<amount>\d+)?d(?<sides>\d+|%)/i;
@@ -56,6 +57,14 @@ let expr = args.expr;
 const AsyncFunction = async function () {}.constructor;
 
 try {
+	if (expr.includes("toWords")) {
+		await initWrittenNumbers(
+			await getWASM(
+				"https://esm.sh/written-numbers@1.0.6/dist/wasm/written_numbers_wasm_bg.wasm"
+			)
+		);
+	}
+
 	// Replace dice notation.
 	let matches;
 	while ((matches = diceNotation.exec(expr))) {
@@ -95,7 +104,6 @@ try {
 		"crypto",
 		"vegas",
 		"toWords",
-		"toOrdinal",
 		"propagateCase",
 		"fact",
 		`${expr};return ${lastExpr.trim()};`
@@ -107,18 +115,17 @@ try {
 		crypto,
 		vegas,
 		(num: any, options: any) => {
-			return toWords(
-				num,
-				Object.assign(
+			return toWords({
+				number: num,
+				languageOptions: Object.assign(
 					{
 						commas: getVariable(["written-numbers", "commas"]),
 						and: getVariable(["written-numbers", "and"]),
 					},
 					options ?? {}
-				)
-			);
+				),
+			});
 		},
-		toOrdinal,
 		propagateCase,
 		factorial
 	);

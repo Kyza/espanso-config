@@ -31,7 +31,7 @@ matches:
                 - --allow-read
                 - --allow-write
                 - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toOrdinal(toWords('ddd999' + ('000'.repeat(dddddd999999))))"
+                - "--expr=toWords('ddd999' + ('000'.repeat(dddddd999999)), { ordinal: true })"
                 - "--case={{case}}"
 
    - regex: "(?P<case>[wW])ord(?P<num>\\d+);;"
@@ -89,7 +89,7 @@ matches:
                 - --allow-read
                 - --allow-write
                 - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toOrdinal(toWords('{{num}}'))"
+                - "--expr=toWords('{{num}}', { ordinal: true })"
                 - "--case={{case}}"
    - regex: "(?P<case>[oO])rdi(n|na|nal)?num;;"
      label: Ordinal Number Form
@@ -111,5 +111,5 @@ matches:
                 - --allow-read
                 - --allow-write
                 - "{{kyzaconfig}}/scripts/expression.ts"
-                - "--expr=toOrdinal(toWords('{{form.num}}'))"
+                - "--expr=toWords('{{form.num}}', { ordinal: true })"
                 - "--case={{case}}"
