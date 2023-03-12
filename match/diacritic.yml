@@ -1,0 +1,209 @@
+matches:
+   - trigger: "a`;;"
+     label: ""
+     replace: "à"
+     propagate_case: true
+
+   - trigger: "e`;;"
+     label: ""
+     replace: "è"
+     propagate_case: true
+
+   - trigger: "i`;;"
+     label: ""
+     replace: "ì"
+     propagate_case: true
+
+   - trigger: "o`;;"
+     label: ""
+     replace: "ò"
+     propagate_case: true
+
+   - trigger: "u`;;"
+     label: ""
+     replace: "ù"
+     propagate_case: true
+
+
+   - trigger: "a';;"
+     label: ""
+     replace: "á"
+     propagate_case: true
+
+   - trigger: "e';;"
+     label: ""
+     replace: "é"
+     propagate_case: true
+
+   - trigger: "i';;"
+     label: ""
+     replace: "í"
+     propagate_case: true
+
+   - trigger: "o';;"
+     label: ""
+     replace: "ó"
+     propagate_case: true
+
+   - trigger: "u';;"
+     label: ""
+     replace: "ú"
+     propagate_case: true
+
+   - trigger: "y';;"
+     label: ""
+     replace: "ý"
+     propagate_case: true
+
+
+   - trigger: "a^;;"
+     label: ""
+     replace: "â"
+     propagate_case: true
+
+   - trigger: "e^;;"
+     label: ""
+     replace: "ê"
+     propagate_case: true
+
+   - trigger: "i^;;"
+     label: ""
+     replace: "î"
+     propagate_case: true
+
+   - trigger: "o^;;"
+     label: ""
+     replace: "ô"
+     propagate_case: true
+
+   - trigger: "u^;;"
+     label: ""
+     replace: "û"
+     propagate_case: true
+
+
+   - trigger: "a~;;"
+     label: ""
+     replace: "û"
+     propagate_case: true
+
+   - trigger: "n~;;"
+     label: ""
+     replace: "û"
+     propagate_case: true
+
+   - trigger: "o~;;"
+     label: ""
+     replace: "õ"
+     propagate_case: true
+
+
+   - trigger: "a:;;"
+     label: ""
+     replace: "ä"
+     propagate_case: true
+
+   - trigger: "e:;;"
+     label: ""
+     replace: "ë"
+     propagate_case: true
+
+   - trigger: "i:;;"
+     label: ""
+     replace: "ï"
+     propagate_case: true
+
+   - trigger: "o:;;"
+     label: ""
+     replace: "ö"
+     propagate_case: true
+
+   - trigger: "u:;;"
+     label: ""
+     replace: "ü"
+     propagate_case: true
+
+   - trigger: "y:;;"
+     label: ""
+     replace: "ÿ"
+     propagate_case: true
+
+
+   - trigger: "ao;;"
+     label: ""
+     replace: "å"
+     propagate_case: true
+
+
+   - trigger: "ae;;"
+     label: ""
+     replace: "æ"
+     propagate_case: true
+
+
+   - trigger: "oe;;"
+     label: ""
+     replace: "œ"
+     propagate_case: true
+
+
+   - trigger: "c,;;"
+     label: ""
+     replace: "ç"
+     propagate_case: true
+
+
+   - trigger: "th;;"
+     label: ""
+     replace: "ð"
+     propagate_case: true
+
+
+   - trigger: "o/;;"
+     label: ""
+     replace: "ø"
+     propagate_case: true
+
+
+   - trigger: "ss;;"
+     label: ""
+     replace: "ß"
+     propagate_case: true
+
+
+   - trigger: "?;;"
+     label: ""
+     replace: "¿"
+     propagate_case: true
+
+
+   - trigger: "!;;"
+     label: ""
+     replace: "¡"
+     propagate_case: true
+
+
+   - trigger: "a-;;"
+     label: ""
+     replace: "ā"
+     propagate_case: true
+
+   - trigger: "e-;;"
+     label: ""
+     replace: "ē"
+     propagate_case: true
+
+   - trigger: "i-;;"
+     label: ""
+     replace: "ī"
+     propagate_case: true
+
+   - trigger: "o-;;"
+     label: ""
+     replace: "ō"
+     propagate_case: true
+
+   - trigger: "u-;;"
+     label: ""
+     replace: "ū"
+     propagate_case: true
