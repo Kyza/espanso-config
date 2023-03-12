@@ -11,6 +11,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/fraction.ts"
                 - "--numerator={{numerator}}"
                 - "--denominator={{denominator}}"
@@ -42,6 +43,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/fraction.ts"
                 - "--numerator={{form.numerator}}"
                 - "--denominator={{form.denominator}}"

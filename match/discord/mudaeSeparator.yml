@@ -21,7 +21,6 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/mudaeSeparator.ts"
                 - "--list={{form.list}}"

@@ -1,209 +1,215 @@
 matches:
    - trigger: "a`;;"
-     label: ""
+     label: "Grave A"
      replace: "à"
      propagate_case: true
 
    - trigger: "e`;;"
-     label: ""
+     label: "Grave E"
      replace: "è"
      propagate_case: true
 
    - trigger: "i`;;"
-     label: ""
+     label: "Grave I"
      replace: "ì"
      propagate_case: true
 
    - trigger: "o`;;"
-     label: ""
+     label: "Grave O"
      replace: "ò"
      propagate_case: true
 
    - trigger: "u`;;"
-     label: ""
+     label: "Grave U"
      replace: "ù"
      propagate_case: true
 
 
    - trigger: "a';;"
-     label: ""
+     label: "Acute A"
      replace: "á"
      propagate_case: true
 
    - trigger: "e';;"
-     label: ""
+     label: "Acute E"
      replace: "é"
      propagate_case: true
 
    - trigger: "i';;"
-     label: ""
+     label: "Acute I"
      replace: "í"
      propagate_case: true
 
    - trigger: "o';;"
-     label: ""
+     label: "Acute O"
      replace: "ó"
      propagate_case: true
 
    - trigger: "u';;"
-     label: ""
+     label: "Acute U"
      replace: "ú"
      propagate_case: true
 
    - trigger: "y';;"
-     label: ""
+     label: "Acute Y"
      replace: "ý"
      propagate_case: true
 
 
    - trigger: "a^;;"
-     label: ""
+     label: "Circumflex A"
      replace: "â"
      propagate_case: true
 
    - trigger: "e^;;"
-     label: ""
+     label: "Circumflex E"
      replace: "ê"
      propagate_case: true
 
    - trigger: "i^;;"
-     label: ""
+     label: "Circumflex I"
      replace: "î"
      propagate_case: true
 
    - trigger: "o^;;"
-     label: ""
+     label: "Circumflex O"
      replace: "ô"
      propagate_case: true
 
    - trigger: "u^;;"
-     label: ""
+     label: "Circumflex U"
      replace: "û"
      propagate_case: true
 
 
    - trigger: "a~;;"
-     label: ""
-     replace: "û"
+     label: "Tilde A"
+     replace: "ã"
      propagate_case: true
 
    - trigger: "n~;;"
-     label: ""
-     replace: "û"
+     label: "Tilde N"
+     replace: "ñ"
      propagate_case: true
 
    - trigger: "o~;;"
-     label: ""
+     label: "Tilde O"
      replace: "õ"
      propagate_case: true
 
 
    - trigger: "a:;;"
-     label: ""
+     label: "Diaeresis A"
      replace: "ä"
      propagate_case: true
 
    - trigger: "e:;;"
-     label: ""
+     label: "Diaeresis E"
      replace: "ë"
      propagate_case: true
 
    - trigger: "i:;;"
-     label: ""
+     label: "Diaeresis I"
      replace: "ï"
      propagate_case: true
 
    - trigger: "o:;;"
-     label: ""
+     label: "Diaeresis O"
      replace: "ö"
      propagate_case: true
 
    - trigger: "u:;;"
-     label: ""
+     label: "Diaeresis U"
      replace: "ü"
      propagate_case: true
 
    - trigger: "y:;;"
-     label: ""
+     label: "Diaeresis Y"
      replace: "ÿ"
      propagate_case: true
 
 
    - trigger: "ao;;"
-     label: ""
+     label: "Bolle A"
      replace: "å"
      propagate_case: true
 
 
    - trigger: "ae;;"
-     label: ""
+     label: "Ligature AE"
      replace: "æ"
      propagate_case: true
 
 
    - trigger: "oe;;"
-     label: ""
+     label: "Ligature OE"
      replace: "œ"
      propagate_case: true
 
 
    - trigger: "c,;;"
-     label: ""
+     label: "Cedilla C"
      replace: "ç"
      propagate_case: true
 
 
-   - trigger: "th;;"
-     label: ""
+   - trigger: "eth;;"
+     label: "Eth"
      replace: "ð"
      propagate_case: true
 
 
+   - trigger: "th;;"
+     label: "Thorn"
+     replace: "þ"
+     propagate_case: true
+
+
    - trigger: "o/;;"
-     label: ""
+     label: "Slashed O"
      replace: "ø"
      propagate_case: true
 
 
    - trigger: "ss;;"
-     label: ""
+     label: "Eszett"
      replace: "ß"
      propagate_case: true
 
 
    - trigger: "?;;"
-     label: ""
+     label: "Inverted Question Mark"
      replace: "¿"
      propagate_case: true
 
 
    - trigger: "!;;"
-     label: ""
+     label: "Inverted Exclamation Point"
      replace: "¡"
      propagate_case: true
 
 
    - trigger: "a-;;"
-     label: ""
+     label: "Macron A"
      replace: "ā"
      propagate_case: true
 
    - trigger: "e-;;"
-     label: ""
+     label: "Macron E"
      replace: "ē"
      propagate_case: true
 
    - trigger: "i-;;"
-     label: ""
+     label: "Macron I"
      replace: "ī"
      propagate_case: true
 
    - trigger: "o-;;"
-     label: ""
+     label: "Macron O"
      replace: "ō"
      propagate_case: true
 
    - trigger: "u-;;"
-     label: ""
+     label: "Macron U"
      replace: "ū"
      propagate_case: true

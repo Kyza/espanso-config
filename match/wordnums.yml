@@ -1,3 +1,6 @@
+# Number RegEx
+# \-?((\d+\.?)|(\.\d+)|(\d+\.\d+))
+
 matches:
    - regex: "(?P<case>[bB])igword;;"
      label: Big Word Number
@@ -11,8 +14,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('ddd999' + ('000'.repeat(dddddd999999)))"
                 - "--case={{case}}"
@@ -28,13 +30,12 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('ddd999' + ('000'.repeat(dddddd999999)), { ordinal: true })"
                 - "--case={{case}}"
 
-   - regex: "(?P<case>[wW])ord(?P<num>\\d+);;"
+   - regex: "(?P<case>[wW])ord(?P<num>\-?((\d+\.?)|(\.\d+)|(\d+\.\d+)));;"
      label: Word Number
      replace: "{{output}}"
      vars:
@@ -46,8 +47,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('{{num}}')"
                 - "--case={{case}}"
@@ -68,13 +68,12 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('{{form.num}}')"
                 - "--case={{case}}"
 
-   - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>\\d+);;"
+   - regex: "(?P<case>[oO])rdi(n|na|nal)?(?P<num>\-?((\d+\.?)|(\.\d+)|(\d+\.\d+)));;"
      label: Ordinal Number
      replace: "{{output}}"
      vars:
@@ -86,8 +85,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('{{num}}', { ordinal: true })"
                 - "--case={{case}}"
@@ -108,8 +106,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr=toWords('{{form.num}}', { ordinal: true })"
                 - "--case={{case}}"

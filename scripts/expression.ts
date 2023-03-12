@@ -60,7 +60,8 @@ try {
 	if (expr.includes("toWords")) {
 		await initWrittenNumbers(
 			await getWASM(
-				"https://esm.sh/written-numbers@1.0.6/dist/wasm/written_numbers_wasm_bg.wasm"
+				"https://esm.sh/written-numbers@1.0.9/dist/wasm/written_numbers_wasm_bg.wasm",
+				"1.0.9"
 			)
 		);
 	}
@@ -70,9 +71,7 @@ try {
 	while ((matches = diceNotation.exec(expr))) {
 		const rolled = roll(
 			parseInt(matches.groups?.amount ?? "1"),
-			matches.groups?.sides === "%"
-				? "%"
-				: parseInt(matches.groups?.sides ?? "1")
+			matches.groups?.sides === "%" ? "%" : parseInt(matches.groups?.sides ?? "1")
 		);
 		expr = expr.replace(matches[0], rolled.toString());
 	}
@@ -153,9 +152,7 @@ try {
 			break;
 		default:
 			console.log(
-				formatResult
-					? JSON.stringify(result, null, "\t")
-					: JSON.stringify(result)
+				formatResult ? JSON.stringify(result, null, "\t") : JSON.stringify(result)
 			);
 			break;
 	}

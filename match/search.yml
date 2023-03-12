@@ -10,7 +10,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/search.ts"
                 - "--query={{query}}"
 
@@ -34,6 +35,7 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/search.ts"
                 - "--query={{form.query}}"

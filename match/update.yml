@@ -17,6 +17,7 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/update.ts"
                 - "--confirm={{form.confirm}}"

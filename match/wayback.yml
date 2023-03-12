@@ -38,7 +38,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/wayback.ts"
                 - "--target={{form.target}}"
                 - "--url={{form.url}}"

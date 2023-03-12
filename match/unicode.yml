@@ -10,6 +10,8 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/unicode.ts"
                 - "--input={{id}}"
                 - "--action=To Unicode"
@@ -41,6 +43,8 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/unicode.ts"
                 - "--input={{form.input}}"
                 - "--action={{form.action}}"

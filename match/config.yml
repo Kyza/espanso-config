@@ -24,9 +24,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
-                - --allow-read
-                - --allow-write
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/config.ts"
                 - "--target=%CONFIG%"
                 - "--action={{form.action}}"
@@ -55,7 +54,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/config.ts"
                 - "--target={{kyzaconfig}}"
                 - "--action={{form.action}}"

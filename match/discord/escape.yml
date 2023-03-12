@@ -19,5 +19,7 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/escape.ts"
                 - "--text={{form.text}}"

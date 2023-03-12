@@ -25,8 +25,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-read
-                - --allow-write
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/variables.ts"
                 - "--variable={{form.variable}}"
                 - "--value={{form.value}}"
@@ -42,7 +42,6 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-read
                 - --allow-write
                 - "{{kyzaconfig}}/scripts/variables.ts"
                 - "--all=true"
@@ -64,8 +63,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-read
-                - --allow-write
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/variables.ts"
                 - "--variable={{form.variable}}"
                 - "--raw=true"

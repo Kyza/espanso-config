@@ -6,8 +6,8 @@ global_vars:
            - deno
            - --quiet
            - run
-           - --allow-read
-           - --allow-write
+           - --unstable
+           - --allow-all
            - "{{kyzaconfig}}/scripts/variables.ts"
            - "--variable=git.bases"
            - "--raw=false"
@@ -56,7 +56,8 @@ matches:
                 - deno
                 - --quiet
                 - run
-                - --allow-run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/git.ts"
                 - "--url={{form.url}}"
                 - "--base={{form.base}}"

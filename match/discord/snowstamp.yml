@@ -32,6 +32,8 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/snowstamp.ts"
                 - "--snowflake={{form.snowflake}}"
                 - "--format={{form.format}}"
@@ -88,6 +90,8 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/snowstamp.ts"
                 - "--year={{form.year}}"
                 - "--month={{form.month}}"
@@ -174,6 +178,8 @@ matches:
                 - deno
                 - --quiet
                 - run
+                - --unstable
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/snowstamp.ts"
                 - "--year={{form.year}}"
                 - "--month={{form.month}}"

@@ -11,9 +11,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
-                - --allow-net
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr={{expr}}"
                 - "--format={{format}}"
@@ -46,9 +44,7 @@ matches:
                 - --quiet
                 - run
                 - --unstable
-                - --allow-read
-                - --allow-write
-                - --allow-net
+                - --allow-all
                 - "{{kyzaconfig}}/scripts/expression.ts"
                 - "--expr={{form.expr}}"
                 - "--format={{form.format}}"
